@@ -42,7 +42,7 @@
     width: 100%;
   }
 
-  @include md {
+  @include bp(750px) {
     @include display-style($direction: column);
   }
 }
@@ -84,7 +84,6 @@
 .qc {
   color: $primary-color;
   font-weight: 700;
-  font-size: 1.2rem !important;
 }
 
 .open_article {

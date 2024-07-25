@@ -24,6 +24,10 @@
       @include bp(1200px) {
         width: 100%;
       }
+
+      p {
+        font-size: 0.9rem;
+      }
     }
   }
 

@@ -15,7 +15,7 @@
   @include lg {
     display: grid;
     grid-template-columns: auto auto auto;
-    justify-items: center;
+    justify-items: left;
   }
 
   @include bp(650px) {
