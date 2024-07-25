@@ -1,0 +1,54 @@
+.procedureSection {
+  @include display-style($direction: column);
+  color: $text-color;
+  background-color: $secondary-color;
+  padding: 50px 20px;
+
+  h1 {
+    text-align: center;
+    margin: 0 0 50px 0;
+  }
+}
+
+.procedure-content {
+  width: 80%;
+  @include display-style($justify: space-evenly);
+
+  @include lg {
+    width: 100%;
+  }
+
+  @include bp(550px) {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 10px;
+  }
+}
+
+.procedure {
+  @include display-style($direction: column);
+  max-width: 150px;
+  text-align: center;
+  gap: 10px;
+
+  span {
+    @include display-style;
+    width: 60px;
+    height: 60px;
+    border-radius: 50px;
+    background-color: $highlight-color;
+  }
+  b {
+    line-height: 1.4rem;
+  }
+}
+
+.line {
+  top: 10px;
+  width: 120px;
+  height: 30px;
+
+  @include bp(700px) {
+    display: none;
+  }
+}

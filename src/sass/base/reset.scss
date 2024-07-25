@@ -1,0 +1,38 @@
+.menu-icon {
+  display: block;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  transition: 0.5s ease-in-out;
+
+  > * {
+    background-color: black;
+    height: 4px;
+    margin: 6px 0;
+    transition: 0.7s;
+  }
+}
+
+.menu-icon div:nth-child(2) {
+  width: 15px;
+}
+
+.menu-icon.open div:nth-child(1) {
+  width: 20px;
+  transform: rotate(-45deg) translate(-3px, 3px);
+}
+
+.menu-icon.open div:nth-child(2) {
+  width: 20px;
+  transform: rotate(45deg) translate(-4px, -4px);
+}
+
+.menu-icon.open div:nth-child(3) {
+  display: none;
+}
+
+.loading-spinner {
+  @include display-style;
+  height: 100vh;
+  font-size: 10px;
+}

@@ -1,0 +1,31 @@
+//Mixin for size properties
+@mixin sizes($primary-width: 100%, $primary-height: 100%) {
+  width: $primary-width;
+  height: $primary-height;
+}
+
+//Mixin for display prperties
+@mixin display-style(
+  $display: flex,
+  $align: center,
+  $justify: center,
+  $direction: row
+) {
+  display: $display;
+  align-items: $align;
+  justify-content: $justify;
+  flex-direction: $direction;
+}
+
+//Mixins for font style
+@mixin font-style(
+  $size: 1rem,
+  $weight: 400,
+  $line-height: 1rem,
+  $letter-space: 0em
+) {
+  font-size: $size;
+  font-weight: $weight;
+  line-height: $line-height;
+  letter-spacing: $letter-space;
+}

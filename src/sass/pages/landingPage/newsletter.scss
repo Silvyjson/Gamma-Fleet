@@ -1,0 +1,64 @@
+.newsletter-section {
+  margin: 50px 0;
+  @include display-style($direction: column);
+
+  h1 {
+    @include font-style($size: 1.8rem, $weight: 700, $line-height: 3.5rem);
+    letter-spacing: -0.03em;
+  }
+
+  p {
+    @include font-style($size: 1.1rem, $weight: 500, $line-height: 1.5rem);
+    width: 50%;
+    letter-spacing: -0.03em;
+    text-align: center;
+
+    @include sm {
+      width: 70%;
+    }
+  }
+}
+
+.newsletter-form {
+  @include display-style($direction: column);
+  gap: 5px;
+  margin-top: 15px;
+
+  div {
+    position: relative;
+    width: 100%;
+  }
+
+  input {
+    padding: 0 45px;
+  }
+
+  button {
+    background-color: $primary-color;
+  }
+
+  @include sm {
+    width: 80%;
+
+    input,
+    .buttonStyle {
+      width: 100%;
+    }
+  }
+}
+
+.mail-logo {
+  position: absolute;
+  left: 15px;
+  top: 16px;
+  color: $primary-color;
+  font-size: 1.3rem;
+}
+
+.newsletterStyle::placeholder {
+  position: absolute;
+  color: $primary-color;
+  font-size: 0.9rem;
+  top: 18px;
+  left: 45px;
+}

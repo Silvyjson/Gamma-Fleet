@@ -1,0 +1,122 @@
+.reviewSection {
+  @include display-style($direction: column);
+  margin: 50px 0;
+  gap: 20px;
+  text-align: center;
+
+  @include lg {
+    flex-direction: column;
+  }
+
+  @include sm {
+    margin-inline: 7%;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+
+    @include md {
+      font-size: 2rem;
+    }
+  }
+}
+
+.review-container {
+  @include display-style;
+  gap: 3%;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 20px;
+  width: 100%;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  @include lg {
+    max-width: 700px;
+    width: 100%;
+    justify-content: left;
+  }
+
+  @include md {
+    max-width: 450px;
+  }
+
+  @include sm {
+    padding: 5px;
+    max-width: 310px;
+  }
+}
+
+.review-content {
+  @include display-style(
+    $direction: column,
+    $align: normal,
+    $justify: space-between
+  );
+  gap: 25px;
+}
+
+.review {
+  position: relative;
+  @include display-style($direction: column);
+  gap: 15px;
+  width: 300px;
+  height: 210px;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  background-color: $page-background-color;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.arrow {
+  position: absolute;
+  bottom: -20px;
+  background-color: $page-background-color;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  width: 30px;
+  height: 30px;
+  clip-path: polygon(100% 0, 0 0, 50% 100%);
+}
+
+.review-image {
+  @include display-style($direction: column);
+
+  img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+  }
+
+  h4 {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 2px;
+  }
+}
+
+.review-dots {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.dot {
+  height: 7px;
+  width: 7px;
+  margin: 0 5px;
+  background-color: $primary-color;
+  border-radius: 50%;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.dot.active {
+  width: 10px;
+  height: 10px;
+  background-color: transparent;
+  border: 2px solid $primary-color;
+}

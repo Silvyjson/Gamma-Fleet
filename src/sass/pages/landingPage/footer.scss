@@ -1,0 +1,101 @@
+.footer_section {
+  padding: 50px 0;
+  background-color: $background-color;
+}
+
+.footer-container {
+  @include display-style($justify: space-evenly, $align: flex-start);
+  @include font-style($line-height: 1.5rem);
+  margin: 30px 0;
+  gap: 50px;
+  letter-spacing: -0.03em;
+  text-align: left;
+  color: white;
+
+  @include lg {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    justify-items: center;
+  }
+
+  @include bp(650px) {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 15px;
+  }
+
+  @include bp(400px) {
+    @include display-style($direction: column);
+    padding: 0;
+    text-align: center;
+  }
+}
+
+.footer-logo {
+  @include display-style($justify: left);
+
+  @include lg {
+    width: 100%;
+  }
+
+  img {
+    width: 80px;
+    height: 60px;
+    margin-left: 20px;
+    cursor: pointer;
+    background-color: $highlight-color;
+    border-radius: 10%;
+    padding: 5px;
+  }
+}
+
+.footer-links {
+  li {
+    list-style-type: none;
+    padding: 5px 0;
+    cursor: pointer;
+  }
+}
+
+.footer-links li:hover {
+  color: $primary-color;
+}
+
+.social-media-img {
+  @include display-style($justify: normal);
+  gap: 10px;
+
+  @include bp(650px) {
+    justify-content: center;
+  }
+}
+
+.social-media-img img {
+  width: 30px;
+  height: 30px;
+  border-radius: 13px;
+}
+
+.footer-copyright {
+  @include display-style($justify: space-between);
+  padding: 0 5%;
+  height: 50px;
+  background-color: $highlight-color;
+  text-align: center;
+  @include font-style(
+    $size: 1rem,
+    $line-height: 1.2rem,
+    $letter-space: -0.03em
+  );
+
+  li {
+    font-size: 1.5rem;
+  }
+
+  @include sm {
+    flex-direction: column;
+    padding: 10px;
+    height: 100%;
+    gap: 10px;
+  }
+}

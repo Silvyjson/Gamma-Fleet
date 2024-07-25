@@ -1,0 +1,57 @@
+.intro-section {
+  @include display-style($align: normal, $justify: space-around);
+  margin: 0 30px;
+
+  @include lg {
+    flex-direction: column;
+  }
+
+  div {
+    @include display-style($align: normal, $justify: right);
+    padding: 50px 0;
+
+    span {
+      @include display-style(
+        $direction: column,
+        $align: normal,
+        $justify: flex-start
+      );
+      gap: 10px;
+      width: 80%;
+
+      @include lg {
+        width: 100%;
+      }
+    }
+  }
+
+  button {
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    @include display-style();
+    max-width: 150px;
+    width: 100%;
+    padding: 20px;
+    height: 40px;
+    border-radius: 10px;
+    background: $button-g-color;
+    color: $text-color;
+    cursor: pointer;
+  }
+
+  img {
+    width: 100%;
+    max-width: 700px;
+    height: 500px;
+    border-radius: 0 0 20px 20px;
+
+    @include lg {
+      border-radius: 20px;
+    }
+
+    @include sm {
+      height: 300px;
+    }
+  }
+}

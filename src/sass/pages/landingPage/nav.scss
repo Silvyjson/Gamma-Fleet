@@ -1,0 +1,101 @@
+.header_nav-section {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 5px 20px;
+  z-index: 1;
+  @include display-style($justify: space-around);
+  background-color: $highlight-color;
+
+  @include lg {
+    flex-direction: column;
+  }
+}
+
+.navElement {
+  @include font-style($size: 0.9rem, $line-height: 2.5rem);
+  @include display-style($justify: normal);
+  gap: 20px;
+  cursor: pointer;
+
+  @include lg {
+    width: 100%;
+    border-top: 5px solid #333;
+    display: none;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+    gap: 3px;
+
+    li {
+      text-align: center;
+      width: 100%;
+    }
+  }
+}
+
+.navlist li {
+  @include display-style();
+  width: auto;
+  padding: 20px;
+  height: 30px;
+  border-radius: 10px;
+  background-color: transparent;
+  border: 2px solid $primary-color;
+
+  @include lg {
+    display: block;
+    width: auto;
+    height: auto;
+    padding: 0;
+    border-radius: none;
+    background-color: transparent;
+    color: black;
+    border: none;
+  }
+}
+
+.navlist :nth-child(2) {
+  background-color: $primary-color;
+  color: $text-color;
+
+  @include lg {
+    background-color: transparent;
+    color: black;
+  }
+}
+
+.navlist {
+  @include lg {
+    padding: 0;
+    margin: 0;
+    border-top: none;
+    border-bottom: 5px solid #333;
+  }
+}
+
+.headersection-menu-icon {
+  display: none;
+
+  @include lg {
+    display: block;
+  }
+}
+
+.logo-menubar-container {
+  @include lg {
+    @include display-style($justify: space-between);
+    width: 100%;
+  }
+
+  img {
+    width: 70px;
+    height: 70px;
+  }
+}
+
+.open_nav {
+  @include lg {
+    display: flex !important;
+  }
+}

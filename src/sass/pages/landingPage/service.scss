@@ -1,0 +1,101 @@
+.service-section {
+  margin: 100px 0;
+  @include display-style($direction: column);
+
+  h1 {
+    @include font-style(
+      $size: 2rem,
+      $weight: 700,
+      $line-height: 1.5rem,
+      $letter-space: -0.02em
+    );
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .p-heading {
+    width: 50%;
+    text-align: center;
+    line-height: 2rem;
+    margin-bottom: 20px;
+
+    @include lg {
+      width: 80%;
+    }
+  }
+}
+
+.service-container {
+  display: grid;
+  grid-template-columns: repeat(3, 320px);
+  grid-template-rows: repeat(auto-fill);
+  gap: 20px;
+  justify-content: center;
+  justify-items: center;
+
+  @include lg {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+.service_card {
+  @include display-style($direction: column, $justify: space-between);
+  gap: 15px;
+  width: 100%;
+  max-width: 320px;
+  max-height: 248px;
+  min-height: 150px;
+  border-radius: 10px;
+  padding: 30px;
+  text-align: center;
+  box-shadow: 0px 4px 4px 2px rgba(0, 0, 0, 0.1);
+
+  @include sm {
+    width: 85%;
+    gap: 8px;
+    max-height: 100%;
+  }
+
+  div {
+    span {
+      @include display-style();
+      width: 50px;
+      height: 50px;
+      background: $gradient-color;
+      border-radius: 50%;
+
+      p {
+        @include display-style();
+        background-color: $highlight-color;
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+      }
+    }
+  }
+  h3 {
+    @include font-style(
+      $size: 1.15rem,
+      $weight: 600,
+      $line-height: 1.25rem,
+      $letter-space: -0.02em
+    );
+  }
+
+  p {
+    @include font-style(
+      $size: 0.9rem,
+      $line-height: 1.15rem,
+      $letter-space: -0.02em
+    );
+  }
+}
+
+.learn-more {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: $secondary-color;
+  cursor: pointer;
+}

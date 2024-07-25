@@ -1,0 +1,125 @@
+.header_section {
+  @include display-style($justify: space-between, $align: flex-start);
+  padding-bottom: 50px;
+  height: 100%;
+  background-color: $background-color;
+  color: $text-color;
+  padding-top: 85px;
+
+  @include lg {
+    align-items: normal;
+    flex-direction: column;
+  }
+
+  @include bp(650px) {
+    padding: 20px 0;
+    padding-top: 95px;
+  }
+}
+
+.header_container {
+  @include display-style($justify: right);
+  width: 80%;
+  position: relative;
+  height: 100%;
+
+  @include lg {
+    justify-content: center;
+    height: 250px;
+  }
+
+  @include bp(650px) {
+    width: 100%;
+  }
+}
+
+.header_content {
+  @include display-style($direction: column);
+  width: 75%;
+  height: 100%;
+  margin-top: 50px;
+
+  @include lg {
+    position: absolute;
+    top: 50px;
+    left: 25px;
+  }
+
+  @include bp(650px) {
+    width: 100%;
+    padding: 20px;
+  }
+
+  h1 {
+    @include font-style($size: 3rem, $weight: 800, $line-height: 4.5rem);
+  }
+
+  p {
+    @include font-style($size: 1.1rem, $weight: 500, $line-height: 2rem);
+  }
+}
+
+.button {
+  margin: 20px auto;
+  width: 100%;
+
+  button {
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    @include display-style();
+    max-width: 200px;
+    width: 100%;
+    padding: 20px;
+    height: 45px;
+    border-radius: 10px;
+    background: $button-g-color;
+    color: $text-color;
+    cursor: pointer;
+  }
+
+  p {
+    font-size: 0.85rem;
+  }
+}
+
+.rate-section {
+  @include display-style($justify: normal);
+  gap: 10px;
+}
+
+.star-icon {
+  color: gold;
+}
+
+.header-image {
+  @include display-style($justify: right, $align: flex-start);
+  width: 100%;
+  img {
+    width: 100%;
+    height: 500px;
+
+    @include md {
+      height: 100%;
+    }
+  }
+}
+
+.companyLogo {
+  @include display-style;
+  gap: 2%;
+  border-bottom: 2px solid black;
+  min-height: 100px;
+  padding: 10px;
+
+  img {
+    height: 50px;
+    width: auto;
+    max-width: 100px;
+  }
+
+  @include md {
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+}

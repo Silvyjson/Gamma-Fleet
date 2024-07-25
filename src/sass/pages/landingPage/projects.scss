@@ -1,0 +1,35 @@
+.project-container {
+  margin: 50px 20px 0;
+  @include display-style;
+  gap: 20px;
+
+  @include md {
+    flex-wrap: wrap;
+  }
+}
+
+.projects-done {
+  text-align: center;
+  @include display-style($direction: column);
+  gap: 5px;
+  width: 180px;
+  height: 180px;
+  padding: 10px;
+  background: linear-gradient(to left, #e1e4ed 27%, #000 150%);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  clip-path: polygon(
+    30% 0%,
+    70% 0%,
+    100% 30%,
+    100% 70%,
+    70% 100%,
+    30% 100%,
+    0% 70%,
+    0% 30%
+  );
+
+  @include lg {
+    width: 150px;
+    height: 150px;
+  }
+}
