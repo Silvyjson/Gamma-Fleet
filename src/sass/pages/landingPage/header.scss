@@ -10,26 +10,17 @@
     align-items: normal;
     flex-direction: column;
   }
-
-  @include bp(650px) {
-    padding: 20px 0;
-    padding-top: 95px;
-  }
 }
 
 .header_container {
   @include display-style($justify: right);
-  width: 80%;
+  width: 100%;
   position: relative;
   height: 100%;
 
   @include lg {
     justify-content: center;
     height: 250px;
-  }
-
-  @include bp(650px) {
-    width: 100%;
   }
 }
 
@@ -41,17 +32,23 @@
 
   @include lg {
     position: absolute;
-    top: 50px;
-    left: 25px;
+    top: 30px;
+    left: 30px;
   }
 
   @include bp(650px) {
     width: 100%;
     padding: 20px;
+    left: 0;
   }
 
   h1 {
-    @include font-style($size: 3rem, $weight: 800, $line-height: 4.5rem);
+    @include font-style($size: 3rem, $weight: 800, $line-height: 4rem);
+
+    @include sm {
+      font-size: 2.5rem;
+      line-height: 3rem;
+    }
   }
 
   p {

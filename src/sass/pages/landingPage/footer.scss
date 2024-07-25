@@ -24,7 +24,7 @@
     gap: 15px;
   }
 
-  @include bp(400px) {
+  @include bp(300px) {
     @include display-style($direction: column);
     padding: 0;
     text-align: center;
