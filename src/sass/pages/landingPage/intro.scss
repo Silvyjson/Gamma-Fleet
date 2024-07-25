@@ -41,7 +41,7 @@
     padding: 20px;
     height: 40px;
     border-radius: 10px;
-    background: $button-g-color;
+    background-color: $primary-color;
     color: $text-color;
     cursor: pointer;
   }
@@ -51,6 +51,7 @@
     max-width: 700px;
     height: 500px;
     border-radius: 0 0 20px 20px;
+    box-shadow: 5px 4px 80px 0px #0000004d;
 
     @include bp(1100px) {
       border-radius: 20px;

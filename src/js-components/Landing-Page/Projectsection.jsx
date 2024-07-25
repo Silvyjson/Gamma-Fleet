@@ -3,20 +3,20 @@ const Projectsection = () => {
     return (
         <div className='project-container'>
             <div className='projects-done'>
-                <h2>Happy Clients</h2>
-                <p>1200+</p>
+                <h2>1200+</h2>
+                <p>Happy Clients</p>
             </div>
             <div className='projects-done'>
-                <h2>Projects Completed</h2>
-                <p>250+</p>
+                <h2>250+</h2>
+                <p>Projects Completed</p>
             </div>
             <div className='projects-done'>
-                <h2>Team Members</h2>
-                <p>20</p>
+                <h2>20+</h2>
+                <p>Team Members</p>
             </div>
             <div className='projects-done'>
-                <h2>Awards Winning</h2>
-                <p>30</p>
+                <h2>30+</h2>
+                <p>Awards Winning</p>
             </div>
         </div>
     )

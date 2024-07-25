@@ -31,12 +31,29 @@
   grid-template-rows: repeat(auto-fill);
   gap: 20px;
   justify-content: center;
-  justify-items: center;
+  align-items: center;
   padding: 0 3%;
 
-  @include bp(1100px) {
-    display: flex;
-    flex-wrap: wrap;
+  @include lg {
+    grid-template-columns: repeat(2, 310px);
+  }
+
+  @include bp(710px) {
+    max-width: 500px;
+    grid-template-columns: repeat(6, 310px);
+    padding: 10px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  @include bp(500px) {
+    max-width: 330px;
   }
 }
 
@@ -52,10 +69,8 @@
   text-align: center;
   box-shadow: 0px 4px 4px 2px rgba(0, 0, 0, 0.1);
 
-  @include sm {
-    width: 85%;
-    gap: 8px;
-    max-height: 100%;
+  @include bp(710px) {
+    height: 248px;
   }
 
   div {

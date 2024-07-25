@@ -66,7 +66,7 @@ const FAQSection = () => {
 
     return (
         <section className="faq-section contact-section">
-            <h1>Frequently Asked questions ️</h1>
+            <h1>FAQ ️</h1>
             <div className="faq-container">
                 {faq.map((article, index) => (
                     <FAQ

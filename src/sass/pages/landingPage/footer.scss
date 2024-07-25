@@ -32,16 +32,13 @@
 }
 
 .footer-logo {
-  @include display-style($justify: left);
-
   @include lg {
     width: 100%;
   }
 
   img {
-    width: 80px;
+    width: 70px;
     height: 60px;
-    margin-left: 20px;
     cursor: pointer;
     background-color: $highlight-color;
     border-radius: 10%;
@@ -70,10 +67,10 @@
   }
 }
 
-.social-media-img img {
-  width: 30px;
-  height: 30px;
-  border-radius: 13px;
+.social-media-icon {
+  display: flex;
+  gap: 5px;
+  cursor: pointer;
 }
 
 .footer-copyright {

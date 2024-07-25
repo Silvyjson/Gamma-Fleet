@@ -39,7 +39,7 @@ function FooterSection() {
             </div>
             <div className="footer-copyright">
                 <p>© 2024 GammaFleet. All rights reserved.</p>
-                <li className='social-media-img'>
+                <li className='social-media-icon'>
                     <FontAwesomeIcon icon="fa-brands fa-facebook" />
                     <FontAwesomeIcon icon="fa-brands fa-square-instagram" />
                     <FontAwesomeIcon icon="fa-brands fa-twitter" />
