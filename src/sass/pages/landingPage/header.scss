@@ -10,6 +10,10 @@
     align-items: normal;
     flex-direction: column;
   }
+
+  @include sm {
+    padding-bottom: 0;
+  }
 }
 
 .header_container {
@@ -19,6 +23,10 @@
 
   @include lg {
     height: 250px;
+  }
+
+  @include sm {
+    height: 300px;
   }
 }
 
@@ -38,6 +46,7 @@
     width: 100%;
     padding: 3%;
     left: 0;
+    top: 0;
   }
 
   h1 {
