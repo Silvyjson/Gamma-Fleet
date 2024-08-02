@@ -1,4 +1,5 @@
 import { useState } from "react";
+import PropTypes from "prop-types";
 
 const FAQ = (props) => {
     const { question, answer, isOpen, onClick } = props;
@@ -12,6 +13,14 @@ const FAQ = (props) => {
         </div>
     );
 };
+
+FAQ.propTypes = {
+    question: PropTypes.string.isRequired,
+    answer: PropTypes.string.isRequired,
+    isOpen: PropTypes.bool,
+    onClick: PropTypes.func.isRequired
+}
+
 
 const FAQSection = () => {
     const [openIndex, setOpenIndex] = useState(0);

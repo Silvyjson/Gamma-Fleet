@@ -10,10 +10,9 @@
 }
 
 .InputStyle {
-  position: relative;
   width: 400px;
-  height: 50px;
-  padding: 20px;
+  height: 45px;
+  padding: 15px;
   border-radius: 5px;
   border: 1px solid #d7d7d7;
   outline: none;
@@ -24,8 +23,16 @@
   color: #d7d7d7;
 }
 
+.selectStyle {
+  width: 400px;
+  height: 45px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #d7d7d7;
+  outline: none;
+}
+
 .textareaStyle {
-  position: relative;
   width: 400px;
   height: 130px;
   padding: 20px;
@@ -38,9 +45,22 @@
 .buttonStyle {
   cursor: pointer;
   width: 400px;
-  height: 50px;
+  height: 45px;
   border-radius: 5px;
   background-color: $primary-color;
-  border: 1px solid $primary-color;
+  border: none;
   color: $page-background-color;
+}
+
+.password-container {
+  position: relative;
+  width: auto;
+
+  .font-awesome {
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+    opacity: 0.5;
+    cursor: pointer;
+  }
 }

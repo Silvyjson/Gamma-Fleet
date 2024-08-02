@@ -1,0 +1,200 @@
+.vehicle-heading {
+  @include display-style($justify: space-between);
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+}
+
+.vehicle-page-container {
+  display: flex;
+  gap: 20px;
+}
+
+.vehicle-detail-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.vehicle-list-section {
+  width: 100%;
+
+  h3 {
+    font-size: 0.9rem;
+    height: 40px;
+  }
+}
+
+.vehicle-list-container {
+  width: 100%;
+  height: 100vh;
+  border-right: 1px solid #ccc;
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    width: 3px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #ccc;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $extra-color;
+  }
+}
+
+.view-vehicle-section {
+  width: 100%;
+  @include display-style($direction: column);
+
+  h3 {
+    @include display-style;
+    align-self: flex-end;
+    width: fit-content;
+    height: 40px;
+    padding: 5px;
+    border: 1px solid $gray-color;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+
+    b {
+      color: blue;
+    }
+  }
+}
+
+.vehivle-buttons {
+  display: flex;
+  width: 100%;
+
+  button {
+    width: 100%;
+    height: 45px;
+    border: none;
+    cursor: pointer;
+  }
+
+  .first-button {
+    background-color: blue;
+    color: $text-color;
+  }
+
+  .second-button {
+    @include display-style;
+    gap: 5px;
+    background-color: $extra-color;
+  }
+}
+
+.view-vehicle-details {
+  width: 100%;
+  height: 43vh;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+.live-location-section {
+  width: 100%;
+
+  h3 {
+    margin-bottom: 10px;
+  }
+}
+
+.live-location {
+  width: 100%;
+  height: 43vh;
+  border: 1px solid red;
+  border-radius: 20px;
+
+  img {
+    width: 43vh;
+    width: 100%;
+  }
+}
+
+.addVehicleSection {
+  @include display-style;
+  position: absolute;
+  background-color: rgba(214, 214, 214, 0.8);
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+}
+
+.addVehicleContainer {
+  position: relative;
+  background-color: $page-background-color;
+  width: 80%;
+  height: 80%;
+  padding: 20px 7%;
+  overflow-y: scroll;
+
+  h1 {
+    margin-top: 20px;
+  }
+}
+
+.x-icon {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.add-vehicle-form {
+  @include display-style($direction: column);
+  gap: 20px;
+
+  input,
+  select {
+    width: 100%;
+  }
+}
+
+.add-vehicle-form-content {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  border-bottom: 1px solid $gray-color;
+  padding-bottom: 15px;
+  gap: 10px;
+  width: 90%;
+}
+
+.insurance {
+  width: 100%;
+  span {
+    @include display-style;
+    gap: 5px;
+  }
+  input[type="radio"] {
+    width: 20px;
+    height: 20px;
+  }
+
+  .radio-input {
+    gap: 20px;
+  }
+}
+
+.add-vehicle-button {
+  display: flex;
+  justify-content: right;
+  width: 90%;
+
+  button {
+    width: 200px;
+    height: 45px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+  }
+
+  :nth-child(2) {
+    background-color: $secondary-color;
+    color: $text-color;
+  }
+}

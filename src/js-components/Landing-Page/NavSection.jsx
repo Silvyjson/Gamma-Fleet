@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 import Menubar from "../Other-component/Navigation";
 import logo from '../../assets/GAMMA_LOGO.png'
+import PropTypes from "prop-types";
 
 const HeaderLinkList = (props) => {
     const { list, clasS } = props;
@@ -15,6 +16,11 @@ const HeaderLinkList = (props) => {
     return (
         <li onClick={toggleGet}>{list}</li>
     );
+}
+
+HeaderLinkList.propTypes = {
+    list: PropTypes.string,
+    clasS: PropTypes.string
 }
 
 const NavSection = () => {
@@ -73,7 +79,7 @@ const NavSection = () => {
                 />
                 <HeaderLinkList
                     list="About Us"
-                    clasS=".service-section"
+                    clasS=".about-section"
                 />
                 <HeaderLinkList
                     list="Resources"

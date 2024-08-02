@@ -9,6 +9,7 @@ import FAQSection from "../Landing-Page/FAQSection";
 import FooterSection from "../Landing-Page/FooterSection";
 import Projectsection from "../Landing-Page/Projectsection";
 import IntroSection from "../Landing-Page/IntroSection";
+import AboutSection from "../Landing-Page/AboutSection";
 
 function LandingPage() {
   return (
@@ -16,6 +17,7 @@ function LandingPage() {
       <NavSection />
       <HeaderSection />
       <CompanyIcon />
+      <AboutSection />
       <ServiceSection />
       <ProcedureSection />
       <Projectsection />

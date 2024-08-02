@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 function Menubar(props) {
   const { onClick, className } = props;
 
@@ -8,5 +9,10 @@ function Menubar(props) {
     </div>
   );
 }
+
+Menubar.propTypes = {
+  onClick: PropTypes.func.isRequired,
+  className: PropTypes.string,
+};
 
 export default Menubar;

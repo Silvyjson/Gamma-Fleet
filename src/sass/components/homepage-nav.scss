@@ -1,0 +1,206 @@
+.homePageMenu_section {
+  @include display-style($direction: column, $justify: flex-start);
+  position: fixed;
+  left: 0;
+  z-index: 1;
+  height: 100vh;
+  font-size: 0.82rem;
+  background-color: $page-background-color;
+  box-shadow: 0px 4px 4px 2px rgba(0, 0, 0, 0.1);
+}
+
+.homePageMenu_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+}
+
+.homePageMenu_content {
+  @include display-style($justify: space-between);
+
+  color: $gray-color;
+  height: 55px;
+  border-top: 1px solid $gray-color;
+  border-bottom: 1px solid $gray-color;
+  cursor: pointer;
+  padding-left: 35%;
+
+  span {
+    display: flex;
+    gap: 10px;
+  }
+
+  img {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.homePageMenu-icon {
+  margin: 20px 0;
+}
+
+.guarantee {
+  @include display-style;
+  gap: 10px;
+  background-color: $secondary-color;
+  color: $text-color;
+  height: 35px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.logout {
+  @include display-style;
+  gap: 5px;
+  color: $secondary-color;
+  cursor: pointer;
+}
+
+.homepage-logo {
+  @include display-style;
+  height: 100px;
+  width: 100%;
+}
+
+.selected {
+  color: $secondary-color;
+  background-color: $extra-color;
+  border-top: 1px solid $extra-color;
+  border-bottom: 1px solid $extra-color;
+}
+
+.drag {
+  @include display-style($direction: column, $justify: space-evenly);
+  width: 20px;
+  height: 100%;
+  background-color: $secondary-color;
+  border-radius: 10px 0 0 10px;
+
+  div {
+    width: 2px;
+    height: 2px;
+    background-color: white;
+  }
+}
+
+.p-names {
+  display: none;
+}
+
+.homepage-header {
+  @include display-style($justify: space-between);
+  background-color: $secondary-color;
+  color: white;
+  padding: 0 5%;
+  height: 88px;
+  gap: 5%;
+  width: 100%;
+
+  h1 {
+    @include display-style($justify: flex-start);
+    font-size: 1.5rem;
+    gap: 5px;
+
+    img {
+      width: 30px;
+    }
+  }
+  p {
+    font-size: 0.9rem;
+  }
+}
+
+.welcome-msg {
+  @include lg {
+    display: none;
+  }
+}
+
+.search_icon-section {
+  position: relative;
+  flex: 1;
+  height: 45px;
+
+  .search-icon {
+    position: absolute;
+    top: 13.5px;
+    left: 15px;
+    color: $gray-color;
+  }
+
+  input {
+    padding-left: 35px;
+    width: 100%;
+    min-width: 300px;
+  }
+
+  input::placeholder {
+    position: absolute;
+    font-size: 0.9rem;
+    top: 13px;
+    left: 35px;
+  }
+}
+
+.profile_name-section {
+  @include display-style($justify: space-between);
+  gap: 10%;
+  flex: 0.5;
+
+  .h-icons {
+    display: flex;
+    gap: 20px;
+
+    .envelop {
+      font-size: 1.8rem;
+      cursor: pointer;
+    }
+
+    .bell {
+      font-size: 2.2rem;
+      cursor: pointer;
+    }
+  }
+
+  .profile-details {
+    @include display-style;
+    gap: 20px;
+    min-width: 200px;
+
+    span {
+      @include display-style(
+        $direction: column,
+        $justify: space-between,
+        $align: flex-start
+      );
+    }
+
+    img {
+      width: 60px;
+      height: 60px;
+    }
+  }
+}
+
+.homepages {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+}
+
+.homepage-dashboard-container {
+  width: calc(100% - 100px);
+  margin-left: 100px;
+}
+
+.homepage-pages {
+  padding: 20px;
+  width: 100%;
+  height: calc(100vh - 88px);
+  overflow-y: auto;
+}

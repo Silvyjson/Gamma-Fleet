@@ -31,8 +31,24 @@
   display: none;
 }
 
-.loading-spinner {
-  @include display-style;
-  height: 100vh;
-  font-size: 10px;
+.error {
+  @include display-style($direction: column);
+  gap: 5px;
+  color: red;
+  margin: 20px 0 10px;
+  max-width: 450px;
+  height: auto;
+  padding: 20px;
+  background-color: rgba(255, 0, 0, 0.2);
+  border-radius: 8px;
+
+  @include lg {
+    max-width: 500px;
+    width: 100%;
+  }
+
+  @include sm {
+    max-width: 100%;
+    width: 100%;
+  }
 }

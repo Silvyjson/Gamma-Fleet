@@ -1,15 +1,24 @@
 import { useState } from "react";
+import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 export const Button = (props) => {
-  const { label, className, onClick, disabled } = props;
+  const { label, className, onClick, type, disabled } = props;
 
   return (
-    <button disabled={disabled} type="submit" className={`buttonStyle ${className}`} onClick={onClick}>{label}</button>
+    <button disabled={disabled} type={type} className={`buttonStyle ${className}`} onClick={onClick}>{label}</button>
   );
 };
 
+Button.propTypes = {
+  label: PropTypes.string.isRequired,
+  onClick: PropTypes.func,
+  disabled: PropTypes.bool,
+  className: PropTypes.string,
+  type: PropTypes.string,
+};
+
 export const Input = (props) => {
-  const { placeholder, type, className, htmlFor, label, id, name, value, onChange, disabled } = props;
+  const { placeholder, type, className, label, name, value, onChange, disabled } = props;
 
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
@@ -19,13 +28,13 @@ export const Input = (props) => {
 
   return (
     <span className="inputFormStyle">
-      <label htmlFor={htmlFor} >{label}</label>
+      <label htmlFor={name} >{label}</label>
       <input
         type={type === "password" ? (isPasswordVisible ? "text" : "password") : type}
         placeholder={placeholder}
         className={`InputStyle ${className}`}
         name={name}
-        id={id}
+        id={name}
         value={value}
         onChange={onChange}
         required
@@ -44,5 +53,45 @@ export const Input = (props) => {
     </span>
   );
 }
+
+Input.propTypes = {
+  placeholder: PropTypes.string,
+  type: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  className: PropTypes.string,
+  disabled: PropTypes.bool,
+};
+
+export const Select = ({ label, name, value, options, onChange, className }) => (
+  <span className="inputFormStyle">
+    <label htmlFor={name}>{label}</label>
+    <select
+      id={name}
+      name={name}
+      value={value}
+      className={`selectStyle ${className}`}
+      onChange={onChange} >
+      <option value="" disabled>Enter</option>
+      {options.map((option, index) => (
+        <option key={index} value={option}>
+          {option}
+        </option>
+      ))}
+    </select>
+  </span>
+);
+
+Select.propTypes = {
+  label: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+  options: PropTypes.arrayOf(PropTypes.string).isRequired,
+  onChange: PropTypes.func.isRequired,
+  className: PropTypes.string,
+}
+
 
 export default Button;

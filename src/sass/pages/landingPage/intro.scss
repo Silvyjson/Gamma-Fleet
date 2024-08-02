@@ -1,33 +1,28 @@
 .intro-section {
-  @include display-style($align: normal, $justify: space-around);
-  margin: 0 30px;
+  @include display-style;
+  margin: 30px;
   gap: 30px;
 
-  @include bp(1100px) {
-    flex-direction: column;
-    gap: 0;
+  div {
+    display: flex;
+    width: 83%;
+    gap: 20px;
+
+    @include bp(1100px) {
+      flex-direction: column;
+      width: 100%;
+      gap: 0;
+    }
   }
 
-  div {
-    @include display-style($align: normal, $justify: right);
-    padding: 50px 0;
+  span {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-bottom: 30px;
 
-    span {
-      @include display-style(
-        $direction: column,
-        $align: normal,
-        $justify: flex-start
-      );
-      gap: 10px;
-      width: 80%;
-
-      @include bp(1200px) {
-        width: 100%;
-      }
-
-      p {
-        font-size: 0.9rem;
-      }
+    p {
+      font-size: 0.9rem;
     }
   }
 
@@ -40,7 +35,7 @@
     width: 100%;
     padding: 20px;
     height: 40px;
-    border-radius: 10px;
+    border-radius: 5px;
     background-color: $primary-color;
     color: $text-color;
     cursor: pointer;
@@ -50,15 +45,12 @@
     width: 100%;
     max-width: 700px;
     height: 500px;
-    border-radius: 0 0 20px 20px;
+    border-radius: 20px;
     box-shadow: 5px 4px 80px 0px #0000004d;
 
-    @include bp(1100px) {
-      border-radius: 20px;
-    }
-
     @include sm {
-      height: 300px;
+      height: 100%;
+      min-height: 250px;
     }
   }
 }

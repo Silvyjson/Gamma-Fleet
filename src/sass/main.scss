@@ -2,10 +2,13 @@
 
 @import "./base/reset", "./base/base";
 
-@import "./components/form";
+@import "./components/form", "./components/entry-form",
+  "./components/homepage-nav";
 
 @import "./pages/landingPage/nav", "./pages/landingPage/header",
   "./pages/landingPage/service", "./pages/landingPage/review",
   "./pages/landingPage/procedure", "./pages/landingPage/projects",
   "./pages/landingPage/faq", "./pages/landingPage/intro",
   "./pages/landingPage/newsletter", "./pages/landingPage/footer";
+
+@import "./pages/VehiclePage/vehicle";

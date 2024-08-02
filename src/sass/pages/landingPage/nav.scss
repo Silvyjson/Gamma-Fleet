@@ -16,7 +16,9 @@
   @include font-style($size: 0.9rem, $line-height: 2.5rem);
   @include display-style($justify: normal);
   gap: 20px;
-  cursor: pointer;
+  li {
+    cursor: pointer;
+  }
 
   @include lg {
     width: 100%;
@@ -32,6 +34,16 @@
       width: 100%;
     }
   }
+}
+
+.navElement li:hover {
+  color: $primary-color;
+  text-decoration: underline;
+}
+
+.navlist :nth-child(2):hover {
+  color: $text-color;
+  text-decoration: none;
 }
 
 .navlist li {
