@@ -83,7 +83,7 @@ const SignUpPage = () => {
         e.preventDefault();
         setLoading(true);
         try {
-            const response = await axios.post('http://localhost:8008/api/register-client', {
+            const response = await axios.post('https://gamma-fleet-backend.onrender.com/api/register-client', {
                 email: formData.email,
                 password: formData.password,
                 clientName: formData.clientName,
@@ -118,7 +118,7 @@ const SignUpPage = () => {
             return;
         }
         try {
-            const response = await axios.post('http://localhost:8008/api/verify-client', {
+            const response = await axios.post('https://gamma-fleet-backend.onrender.com/api/verify-client', {
                 otp: otp
             }, {
                 withCredentials: true,
@@ -161,7 +161,7 @@ const SignUpPage = () => {
         }
 
         try {
-            const response = await axios.patch('http://localhost:8008/api/generate-new-otp', {
+            const response = await axios.patch('https://gamma-fleet-backend.onrender.com/api/generate-new-otp', {
             }, {
                 withCredentials: true,
                 headers: {

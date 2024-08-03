@@ -1,10 +1,10 @@
 import { useState } from "react"
 import HomePageHeader from "../../Other-component/HomePageHeader"
 import HomePageNav from "../../Other-component/HomePageNav"
-import ViewVehiclesection from "../../Vehicle-page/ViewVehiclesection"
-import LiveLocationSection from "../../Vehicle-page/LiveLocationSection"
-import VehicleListSection from "../../Vehicle-page/VehicleListSection"
-import AddVehicleSection from "../../Vehicle-page/AddVehicleSection"
+import ViewVehiclesection from "../../Home-page-components/Vehicle-page/ViewVehiclesection"
+import LiveLocationSection from "../../Home-page-components/Vehicle-page/LiveLocationSection"
+import VehicleListSection from "../../Home-page-components/Vehicle-page/VehicleListSection"
+import AddVehicleSection from "../../Home-page-components/Vehicle-page/AddVehicleSection"
 
 const VehiclePage = () => {
     const [vehicleForm, SetVehicleForm] = useState(false)

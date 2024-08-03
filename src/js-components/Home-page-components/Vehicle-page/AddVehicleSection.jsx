@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Input, Select } from '../Other-component/FormProps';
+import { Input, Select } from '../../Other-component/FormProps';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PropTypes from "prop-types";
 import axios from 'axios';
@@ -47,7 +47,7 @@ const AddVehicleSection = ({ onClick }) => {
         e.preventDefault();
 
         try {
-            const response = await axios.post('http://localhost:8008/api/add-vehicle', formData, {
+            const response = await axios.post('https://gamma-fleet-backend.onrender.com/api/add-vehicle', formData, {
                 headers: {
                     'Content-Type': 'application/json'
                 }
