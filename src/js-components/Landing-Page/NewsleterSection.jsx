@@ -11,6 +11,7 @@ const NewsleterSection = () => {
                         <Input
                             type="email"
                             name="email"
+                            required
                             placeholder="Enter your email address"
                             className="newsletterStyle"
                         />

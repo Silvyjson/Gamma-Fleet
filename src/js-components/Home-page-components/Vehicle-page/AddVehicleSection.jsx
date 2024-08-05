@@ -1,37 +1,62 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import Cookies from 'react-cookies';
+import axios from 'axios';
 import { Input, Select } from '../../Other-component/FormProps';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PropTypes from "prop-types";
-import axios from 'axios';
 
-const AddVehicleSection = ({ onClick }) => {
+const AddVehicleSection = ({ onClick, setVehicleForm }) => {
+    const [message, setMessage] = useState(null);
+    const [loading, setLoading] = useState(false);
     const [formData, setFormData] = useState({
-        VehicleName: '',
-        Model: '',
-        ChassisNumber: '',
-        ProductType: '',
-        PurchaseDate: '',
-        PermitType: '',
-        OwnersName: '',
-        OwnersLicense: '',
-        address: {
-            AddressLine1: '',
-            AddressLine2: '',
-            State: '',
-            Country: ''
+        vehicleName: '',
+        model: '',
+        chassisNumber: '',
+        productType: '',
+        purchaseDate: '',
+        permitType: '',
+        ownersName: '',
+        ownersLicense: '',
+        ownersAddress: {
+            addressLine: '',
+            state: '',
+            country: ''
         },
+        assignedDriver: '',
         insurance: '',
-        InsuranceDueDate: ''
+        insuranceDueDate: ''
     });
+    const [drivers, setDrivers] = useState([]);
+
+    const token = Cookies.load('token');
+
+    useEffect(() => {
+        const fetchDrivers = async () => {
+            try {
+                const response = await axios.get('https://gamma-fleet-backend.onrender.com/api/get-driver',
+                    {
+                        withCredentials: true,
+                        headers: {
+                            Authorization: `Bearer ${token}`
+                        }
+                    });
+                setDrivers(response.data.drivers);
+            } catch (error) {
+                console.error('There was an error fetching the drivers!', error);
+            }
+        };
+
+        fetchDrivers();
+    }, [token]);
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
 
-        if (['AddressLine1', 'AddressLine2', 'State', 'Country'].includes(name)) {
+        if (['addressLine', 'state', 'country'].includes(name)) {
             setFormData(prevState => ({
                 ...prevState,
-                address: {
-                    ...prevState.address,
+                ownersAddress: {
+                    ...prevState.ownersAddress,
                     [name]: value
                 }
             }));
@@ -45,19 +70,32 @@ const AddVehicleSection = ({ onClick }) => {
 
     const handleFormSubmit = async (e) => {
         e.preventDefault();
+        setLoading(true);
+
+        if (!token) {
+            setMessage("No token found");
+            return;
+        }
+
+        const insurance = formData.insurance === 'Yes';
 
         try {
-            const response = await axios.post('https://gamma-fleet-backend.onrender.com/api/add-vehicle', formData, {
+            await axios.post('https://gamma-fleet-backend.onrender.com/api/add-vehicle', {
+                ...formData,
+                insurance,
+            }, {
+                withCredentials: true,
                 headers: {
-                    'Content-Type': 'application/json'
+                    Authorization: `Bearer ${token}`
                 }
             });
-            console.log(response.data);
-            alert('Vehicle added successfully!');
-            onClick();  // Close the form
+            setLoading(false);
+            setMessage('Vehicle added successfully!');
+            setVehicleForm(false);
         } catch (error) {
+            setLoading(false);
             console.error('There was an error adding the vehicle!', error);
-            alert('Error adding vehicle: ' + (error.response ? error.response.data.message : error.message));
+            setMessage(error.response?.data?.message || error.message);
         }
     };
 
@@ -67,131 +105,154 @@ const AddVehicleSection = ({ onClick }) => {
                 <FontAwesomeIcon icon="fa-solid fa-x" className='x-icon' onClick={onClick} />
                 <h1>Add a new vehicle</h1>
                 <form className='add-vehicle-form' onSubmit={handleFormSubmit}>
+                    {message && <div className='error v-error'><FontAwesomeIcon icon="fa-solid fa-circle-exclamation" /><p>{message}</p></div>}
                     <div className='add-vehicle-form-content form-1'>
                         <Input
                             label="Vehicle Name"
                             type="text"
-                            name="VehicleName"
-                            placeholder="00-231-2024"
-                            value={formData.VehicleName}
+                            name="vehicleName"
+                            placeholder="e.g BENZ ES360"
+                            value={formData.vehicleName}
                             onChange={handleInputChange}
+                            required
                         />
                         <Input
                             label="Model"
-                            name="Model"
-                            value={formData.Model}
+                            name="model"
+                            value={formData.model}
                             type="text"
                             placeholder="Enter a model"
                             onChange={handleInputChange}
+                            required
                         />
                         <Input
                             label="Chassis Number"
                             type="text"
-                            name="ChassisNumber"
+                            name="chassisNumber"
                             placeholder="00-231-2024"
-                            value={formData.ChassisNumber}
+                            value={formData.chassisNumber}
                             onChange={handleInputChange}
+                            required
                         />
                         <Select
                             label="Product type"
-                            name="ProductType"
-                            value={formData.ProductType}
+                            name="productType"
+                            value={formData.productType}
                             type="text"
                             options={["Sedan", "SUV", "Truck", "Van", "Coupe", "Coach"]}
                             onChange={handleInputChange}
+                            required
                         />
                         <Input
                             label="Purchase Date"
                             type="date"
-                            name="PurchaseDate"
+                            name="purchaseDate"
                             placeholder="Enter"
-                            value={formData.PurchaseDate}
+                            value={formData.purchaseDate}
                             onChange={handleInputChange}
+                            required
                         />
                         <Select
                             label="Permit type"
-                            name="PermitType"
-                            value={formData.PermitType}
+                            name="permitType"
+                            value={formData.permitType}
                             options={["Commercial", "Personal", "Government", "Rental", "Emergency"]}
                             onChange={handleInputChange}
+                            required
                         />
                     </div>
                     <div className='add-vehicle-form-content form-2'>
                         <Input
                             label="Owner’s Name"
                             type="text"
-                            name="OwnersName"
+                            name="ownersName"
                             placeholder="e.g John tall"
-                            value={formData.OwnersName}
+                            value={formData.ownersName}
                             onChange={handleInputChange}
+                            required
                         />
                         <Input
                             label="Owner’s License"
                             type="text"
-                            name="OwnersLicense"
+                            name="ownersLicense"
                             placeholder="e.g John tall"
-                            value={formData.OwnersLicense}
+                            value={formData.ownersLicense}
                             onChange={handleInputChange}
+                            required
                         />
                         <Input
-                            label="Address Line 1"
+                            label="Address Line"
                             type="text"
-                            name="AddressLine1"
+                            name="addressLine"
                             placeholder="house no, street, city"
-                            value={formData.address.AddressLine1}
+                            value={formData.ownersAddress.addressLine}
                             onChange={handleInputChange}
-                        />
-                        <Input
-                            label="Address Line 2"
-                            type="text"
-                            name="AddressLine2"
-                            placeholder="house no, street, city"
-                            value={formData.address.AddressLine2}
-                            onChange={handleInputChange}
+                            required
                         />
                         <Input
                             label="State"
                             type="text"
-                            name="State"
+                            name="state"
                             placeholder="e.g Lagos state"
-                            value={formData.address.State}
+                            value={formData.ownersAddress.state}
                             onChange={handleInputChange}
+                            required
                         />
                         <Input
                             label="Country"
                             type="text"
-                            name="Country"
+                            name="country"
                             placeholder="e.g Nigeria"
-                            value={formData.address.Country}
+                            value={formData.ownersAddress.country}
                             onChange={handleInputChange}
+                            required
                         />
+                        <span className="inputFormStyle">
+                            <label htmlFor="assignedDriver">Assign Driver</label>
+                            <select
+                                id="assignedDriver"
+                                name="assignedDriver"
+                                value={formData.assignedDriver}
+                                className="selectStyle"
+                                onChange={handleInputChange}
+                                required
+                            >
+                                <option value="" disabled>Enter</option>
+                                {Array.isArray(drivers) && drivers.map((driver, index) => (
+                                    <option key={index} value={driver._id}>
+                                        {driver.fullName}
+                                    </option>
+                                ))}
+                            </select>
+                        </span>
                     </div>
                     <div className='add-vehicle-form-content form-2'>
                         <span className='insurance'>
                             <p>Insurance</p>
                             <span className='radio-input'>
                                 <span>
-                                    <input type="radio" name="insurance" id="insurance-yes" value="Yes" onChange={handleInputChange} />
+                                    <input type="radio" name="insurance" id="insurance-yes" value="Yes" onChange={handleInputChange} required />
                                     <label htmlFor="insurance-yes">Yes</label>
                                 </span>
                                 <span>
-                                    <input type="radio" name="insurance" id="insurance-no" value="No" onChange={handleInputChange} />
+                                    <input type="radio" name="insurance" id="insurance-no" value="No" onChange={handleInputChange} required />
                                     <label htmlFor="insurance-no">No</label>
                                 </span>
                             </span>
                         </span>
                         <Input
-                            label="Insurance Due Date (If yes)"
+                            label="Insurance Due Date"
                             type="date"
-                            name="InsuranceDueDate"
-                            placeholder="Enter due date"
-                            value={formData.InsuranceDueDate}
+                            name="insuranceDueDate"
+                            value={formData.insuranceDueDate}
                             onChange={handleInputChange}
                         />
                     </div>
                     <div className='add-vehicle-button'>
                         <button type="button" onClick={onClick}>Discard</button>
-                        <button type="submit">Add</button>
+                        <button type="submit">
+                            {loading ? <FontAwesomeIcon icon="fa-solid fa-spinner" size="1x" spin /> : "Add"}
+                        </button>
                     </div>
                 </form>
             </div>
@@ -200,7 +261,8 @@ const AddVehicleSection = ({ onClick }) => {
 };
 
 AddVehicleSection.propTypes = {
-    onClick: PropTypes.func.isRequired
+    onClick: PropTypes.func.isRequired,
+    setVehicleForm: PropTypes.func,
 };
 
 export default AddVehicleSection;

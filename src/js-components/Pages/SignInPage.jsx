@@ -68,6 +68,7 @@ const SignInPage = () => {
                             type="email"
                             name="email"
                             placeholder="Enter"
+                            required
                             value={formData.email}
                             onChange={handleInputChange}
                         />
@@ -76,6 +77,7 @@ const SignInPage = () => {
                             type="password"
                             name="password"
                             placeholder="Enter"
+                            required
                             value={formData.password}
                             onChange={handleInputChange}
                         />

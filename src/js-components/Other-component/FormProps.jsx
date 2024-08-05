@@ -10,7 +10,7 @@ export const Button = (props) => {
 };
 
 Button.propTypes = {
-  label: PropTypes.string.isRequired,
+  label: PropTypes.any,
   onClick: PropTypes.func,
   disabled: PropTypes.bool,
   className: PropTypes.string,
@@ -18,7 +18,7 @@ Button.propTypes = {
 };
 
 export const Input = (props) => {
-  const { placeholder, type, className, label, name, value, onChange, disabled } = props;
+  const { placeholder, type, className, label, name, value, onChange, required, disabled } = props;
 
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
@@ -37,7 +37,7 @@ export const Input = (props) => {
         id={name}
         value={value}
         onChange={onChange}
-        required
+        required={required}
         disabled={disabled}
         autoComplete="on"
       />
@@ -56,13 +56,14 @@ export const Input = (props) => {
 
 Input.propTypes = {
   placeholder: PropTypes.string,
-  type: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
+  type: PropTypes.string,
+  label: PropTypes.string,
+  name: PropTypes.string,
+  value: PropTypes.string,
+  onChange: PropTypes.func,
   className: PropTypes.string,
   disabled: PropTypes.bool,
+  required: PropTypes.bool,
 };
 
 export const Select = ({ label, name, value, options, onChange, className }) => (
@@ -85,11 +86,11 @@ export const Select = ({ label, name, value, options, onChange, className }) => 
 );
 
 Select.propTypes = {
-  label: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
-  options: PropTypes.arrayOf(PropTypes.string).isRequired,
-  onChange: PropTypes.func.isRequired,
+  label: PropTypes.string,
+  name: PropTypes.string,
+  value: PropTypes.string,
+  options: PropTypes.arrayOf(PropTypes.string),
+  onChange: PropTypes.func,
   className: PropTypes.string,
 }
 

@@ -17,7 +17,7 @@
 }
 
 .vehicle-list-section {
-  width: 100%;
+  width: 80%;
 
   h3 {
     font-size: 0.9rem;
@@ -26,10 +26,14 @@
 }
 
 .vehicle-list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   width: 100%;
   height: 100vh;
   border-right: 1px solid #ccc;
   overflow-y: scroll;
+  padding: 0 20px;
 
   &::-webkit-scrollbar {
     width: 3px;
@@ -40,7 +44,119 @@
   }
 
   &::-webkit-scrollbar-thumb {
-    background: $extra-color;
+    background: blue;
+  }
+}
+
+.vehicle-list-content {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  height: 350px;
+  border-radius: 20px;
+  padding: 10px;
+  background-color: $page-background-color;
+  box-shadow: 0px 4px 4px 2px rgba(0, 0, 0, 0.1);
+
+  .status {
+    p {
+      background-color: $primary-color;
+      @include display-style;
+      color: $text-color;
+      height: 40px;
+      width: 150px;
+      border-radius: 10px;
+    }
+  }
+
+  .details {
+    @include display-style($justify: space-evenly);
+
+    .details-content {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .image {
+      width: 100px;
+    }
+  }
+
+  .active-trip {
+    position: relative;
+    @include display-style;
+    width: 100%;
+    height: 200px;
+    border-radius: 20px;
+    padding: 10px;
+    background-color: #d6ffd7;
+    box-shadow: 0px 4px 4px 2px rgba(0, 0, 0, 0.1);
+
+    .active-trip-details {
+      @include display-style;
+      gap: 20px;
+      width: 100%;
+      height: 60%;
+    }
+  }
+
+  .date,
+  .distance {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  .distance {
+    border-left: 1px solid $gray-color;
+    padding-left: 20px;
+    h3 {
+      height: auto;
+    }
+
+    p {
+      font-size: 0.8rem;
+    }
+  }
+
+  .distance-details {
+    @include display-style($justify: space-between, $align: flex-start);
+    gap: 20px;
+    width: 100%;
+  }
+
+  .dd1:nth-child(1) {
+    color: green;
+  }
+
+  .dd2 {
+    color: red;
+  }
+
+  .time {
+    color: blue;
+  }
+
+  .tripdot {
+    position: absolute;
+    left: 155px;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+  }
+
+  .td1 {
+    background-color: green;
+    top: 30px;
+  }
+
+  .td2 {
+    background-color: red;
+    bottom: 30px;
   }
 }
 
@@ -50,6 +166,7 @@
 
   h3 {
     @include display-style;
+    gap: 5px;
     align-self: flex-end;
     width: fit-content;
     height: 40px;
@@ -65,7 +182,7 @@
   }
 }
 
-.vehivle-buttons {
+.vehicle-buttons {
   display: flex;
   width: 100%;
 
@@ -89,10 +206,46 @@
 }
 
 .view-vehicle-details {
+  @include display-style;
   width: 100%;
   height: 43vh;
   border: 1px solid #ccc;
-  border-radius: 10px;
+  border-radius: 20px;
+  gap: 10px;
+
+  .vehicle-image {
+    width: 100%;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .vehicle-details-list {
+    @include display-style($direction: column);
+    width: 100%;
+    height: 100%;
+    background-color: $extra-color;
+    border: 3px solid blue;
+    border-radius: 20px;
+
+    span {
+      @include display-style($justify: space-between);
+      height: 100%;
+      width: 100%;
+      border-top: 1px solid $text-color;
+      border-bottom: 1px solid $text-color;
+      padding: 0 20px;
+    }
+
+    :nth-child(1) {
+      border-top: none;
+    }
+
+    :nth-child(6) {
+      border-bottom: none;
+    }
+  }
 }
 
 .live-location-section {
@@ -118,6 +271,8 @@
 .addVehicleSection {
   @include display-style;
   position: absolute;
+  top: 0;
+  left: 0;
   background-color: rgba(214, 214, 214, 0.8);
   z-index: 2;
   width: 100%;

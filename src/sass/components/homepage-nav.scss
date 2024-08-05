@@ -1,3 +1,23 @@
+.homepages {
+  display: flex;
+  width: 1536px;
+  height: 100vh;
+  position: relative;
+}
+
+.homepage-dashboard-container {
+  width: calc(100% - 100px);
+  margin-left: 100px;
+  overflow: hidden;
+}
+
+.homepage-pages {
+  padding: 20px;
+  width: 100%;
+  height: calc(100vh - 88px);
+  overflow-y: auto;
+}
+
 .homePageMenu_section {
   @include display-style($direction: column, $justify: flex-start);
   position: fixed;
@@ -114,12 +134,6 @@
   }
 }
 
-.welcome-msg {
-  @include lg {
-    display: none;
-  }
-}
-
 .search_icon-section {
   position: relative;
   flex: 1;
@@ -184,23 +198,4 @@
       height: 60px;
     }
   }
-}
-
-.homepages {
-  display: flex;
-  width: 100%;
-  min-height: 100vh;
-  position: relative;
-}
-
-.homepage-dashboard-container {
-  width: calc(100% - 100px);
-  margin-left: 100px;
-}
-
-.homepage-pages {
-  padding: 20px;
-  width: 100%;
-  height: calc(100vh - 88px);
-  overflow-y: auto;
 }
