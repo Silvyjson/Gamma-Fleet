@@ -1,13 +1,10 @@
-import HomePageHeader from "../../Other-component/HomePageHeader"
-import HomePageNav from "../../Other-component/HomePageNav"
+import DriverListSection from "../../Home-page-components/Driver-page/DriverListSection"
 
 const DriverPage = () => {
+
     return (
-        <section className="homepages">
-            <HomePageNav />
-            <div className="homepage-dashboard-container">
-                <HomePageHeader />
-            </div>
+        <section className="homepage-pages">
+            <DriverListSection />
         </section>
     )
 }

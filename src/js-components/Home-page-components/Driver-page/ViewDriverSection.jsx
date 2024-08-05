@@ -1,0 +1,70 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import DriversImage from "../../../assets/DriversImage.png";
+import phonecall from "../../../assets/call.png";
+import message from "../../../assets/message.png";
+import camera from "../../../assets/camera.png";
+import location from "../../../assets/carbon_location.png";
+import vehicleImage from "../../../assets/bus-image.png";
+import PropTypes from "prop-types";
+import DriverTripTable from "./DriverTripTable";
+
+const ViewDriverSection = ({ driver, onClick }) => {
+
+    const { fullName, driverId, licenseNumber, performanceRate, assignedVehicle } = driver;
+
+    return (
+        <section>
+            <div className="driver-section-top">
+                <div className="arrow-return" onClick={onClick}><FontAwesomeIcon icon="fa-solid fa-arrow-left" /></div>
+                <button><FontAwesomeIcon icon="fa-solid fa-plus" />Add New Driver</button>
+            </div>
+            <div className="driver-list-content">
+                <img src={DriversImage} alt="image of the driver" />
+                <div className="driver-detail-section">
+                    <p>Driver: <b>{fullName}</b></p>
+                    <div className="driver-icon">
+                        <span>
+                            <img src={phonecall} alt="call icon" />
+                        </span>
+                        <span>
+                            <img src={message} alt="message icon" />
+                        </span>
+                        <span>
+                            <img src={camera} alt="camera icon" />
+                        </span>
+                        <span>
+                            <img src={location} alt="location icon" />
+                        </span>
+                    </div>
+                    <div className="driver-details">
+                        <span>
+                            <p>ID Number:</p>
+                            <b>ID{driverId}</b>
+                        </span>
+                        <span>
+                            <p>Driver’s License:</p>
+                            <b>{licenseNumber}</b>
+                        </span>
+                        <span>
+                            <p>Performance:</p>
+                            <b>{performanceRate}</b>
+                        </span>
+                        <span>
+                            <p>Currently assigned car:</p>
+                            <b>{assignedVehicle.vehicleName}</b>
+                        </span>
+                    </div>
+                </div>
+                <img src={vehicleImage} alt="image of a vehicle" />
+            </div>
+            <DriverTripTable />
+        </section>
+    )
+}
+
+ViewDriverSection.propTypes = {
+    driver: PropTypes.object,
+    onClick: PropTypes.func,
+};
+
+export default ViewDriverSection

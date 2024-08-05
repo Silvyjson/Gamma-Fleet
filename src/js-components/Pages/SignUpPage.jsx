@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Cookies from 'react-cookies';
-import { Button, Input } from "../Other-component/FormProps";
+import { Button, Input, Select } from "../Other-component/FormProps";
 import logo from '../../assets/GAMMA_LOGO.png';
 import createAccountImage from '../../assets/create-account-image.png';
 import businessRegistrationImage from '../../assets/business-registration-image.png';
@@ -99,10 +99,13 @@ const SignUpPage = () => {
             setStep(prevStep => prevStep + 1);
         } catch (error) {
             setLoading(false);
-            setMessage(error.response?.data?.message || error.message);
+            if (error) {
+                setMessage(error.response?.data?.message || error.message);
+            } else {
+                setMessage(null);
+            }
         } finally {
             setLoading(false);
-            setMessage(null);
         }
     };
 
@@ -133,10 +136,13 @@ const SignUpPage = () => {
             navigate("/Gamma-Fleet/dashboard-page");
         } catch (error) {
             setLoading(false);
-            setMessage(error.response?.data?.message || error.message);
+            if (error) {
+                setMessage(error.response?.data?.message || error.message);
+            } else {
+                setMessage(null);
+            }
         } finally {
             setLoading(false);
-            setMessage(null);
         }
     };
 
@@ -223,6 +229,7 @@ const SignUpPage = () => {
                                 placeholder="Enter"
                                 value={formData.email}
                                 onChange={handleInputChange}
+                                required
                             />
                             <Input
                                 label="Create Password"
@@ -231,6 +238,7 @@ const SignUpPage = () => {
                                 placeholder="Enter"
                                 value={formData.password}
                                 onChange={handleInputChange}
+                                required
                             />
                             <Input
                                 label="Confirm Password"
@@ -239,6 +247,7 @@ const SignUpPage = () => {
                                 placeholder="Enter"
                                 value={formData.confirmPassword}
                                 onChange={handleInputChange}
+                                required
                             />
                             <span className='link'>
                                 <input type="checkbox" required />
@@ -271,6 +280,7 @@ const SignUpPage = () => {
                                 placeholder="Enter"
                                 value={formData.clientName}
                                 onChange={handleInputChange}
+                                required
                             />
                             <Input
                                 label="Tax ID"
@@ -279,6 +289,7 @@ const SignUpPage = () => {
                                 placeholder="Enter"
                                 value={formData.taxId}
                                 onChange={handleInputChange}
+                                required
                             />
                             <Input
                                 label="Company Address"
@@ -287,20 +298,16 @@ const SignUpPage = () => {
                                 placeholder="Enter"
                                 value={formData.clientAddress}
                                 onChange={handleInputChange}
+                                required
                             />
-                            <div className='inputFormStyle'>
-                                <select
-                                    id="servicesOffered"
-                                    className='selectStyle'
-                                    value={formData.servicesOffered}
-                                    onChange={handleInputChange}
-                                    required
-                                >
-                                    <option value="" disabled>Enter</option>
-                                    <option value="transportation">Transportation</option>
-                                    <option value="logistics">Logistics</option>
-                                </select>
-                            </div>
+                            <Select
+                                label="Services Offered"
+                                name="servicesOffered"
+                                value={formData.servicesOffered}
+                                options={["Transportation", "Logistics"]}
+                                onChange={handleInputChange}
+                                required
+                            />
                             <div className='entry-form-button'>
                                 <Button type="button" label={<><FontAwesomeIcon icon="fa-solid fa-arrow-left" />Previous</>} onClick={handlePrevious} className="p-button" />
                                 <Button type="submit" label={loading ? <FontAwesomeIcon icon="fa-solid fa-spinner" size="1x" spin /> : <>Submit<FontAwesomeIcon icon="fa-solid fa-arrow-right" /></>} />
@@ -329,7 +336,7 @@ const SignUpPage = () => {
                                     />
                                 ))}
                             </div>
-                            <Button type="submit" label={loading ? <FontAwesomeIcon icon="fa-solid fa-spinner" size="2x" spin /> : "Verify"} />
+                            <Button type="submit" label={loading ? <FontAwesomeIcon icon="fa-solid fa-spinner" size="1x" spin /> : "Verify"} />
                             <p className='p-link'>Didn’t get the code? <b onClick={handleGenerateOTP}>Click to resend</b></p>
                         </div>
                         <div className='entry-form-image'>
