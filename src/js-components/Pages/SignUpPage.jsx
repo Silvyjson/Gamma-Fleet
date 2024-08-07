@@ -117,7 +117,7 @@ const SignUpPage = () => {
         const token = Cookies.load('token');
         if (!token) {
             setLoading(false);
-            setMessage("No token found");
+            setMessage("Invalid token");
             return;
         }
         try {
@@ -162,7 +162,7 @@ const SignUpPage = () => {
     const handleGenerateOTP = async () => {
         const token = Cookies.load('token');
         if (!token) {
-            setMessage("No token found");
+            setMessage("Invalid token");
             return;
         }
 
