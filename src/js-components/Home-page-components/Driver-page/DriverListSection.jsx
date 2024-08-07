@@ -9,32 +9,34 @@ import camera from "../../../assets/camera.png";
 import location from "../../../assets/carbon_location.png";
 import vehicleImage from "../../../assets/bus-image.png";
 import ViewDriverSection from "./ViewDriverSection";
+import AddDriversection from "./AddDriversection";
 
 const DriverListSection = () => {
   const [drivers, setDrivers] = useState([]);
   const [selectedDriver, setSelectedDriver] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [driverForm, setDriverForm] = useState(false);
 
+
+  const fetchDrivers = async () => {
+    const token = Cookies.load('token');
+    setLoading(true);
+    try {
+      const response = await axios.get('https://gamma-fleet-backend.onrender.com/api/get-driver', {
+        withCredentials: true,
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+      const fetchedDrivers = response.data.drivers;
+      setDrivers(fetchedDrivers);
+    } catch (error) {
+      console.error('There was an error fetching the drivers!', error);
+    } finally {
+      setLoading(false);
+    }
+  };
   useEffect(() => {
-    const fetchDrivers = async () => {
-      const token = Cookies.load('token');
-      setLoading(true);
-      try {
-        const response = await axios.get('https://gamma-fleet-backend.onrender.com/api/get-driver', {
-          withCredentials: true,
-          headers: {
-            Authorization: `Bearer ${token}`
-          }
-        });
-        const fetchedDrivers = response.data.drivers;
-        setDrivers(fetchedDrivers);
-      } catch (error) {
-        console.error('There was an error fetching the drivers!', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
     fetchDrivers();
   }, []);
 
@@ -65,9 +67,19 @@ const DriverListSection = () => {
     setSelectedDriver(null);
   };
 
+
+  const handleGetDriverForm = () => {
+    setDriverForm(true);
+  }
+
+  const handleRemoveDriverForm = () => {
+    setDriverForm(false);
+    fetchDrivers();
+  }
+
   if (selectedDriver) {
     return (
-      <ViewDriverSection driver={selectedDriver} onClick={handleReturn} />
+      <ViewDriverSection driver={selectedDriver} onReturn={handleReturn} onGetForm={handleGetDriverForm} />
     );
   }
 
@@ -75,7 +87,7 @@ const DriverListSection = () => {
     <section className="driver-list-section">
       <div className="driver-section-top">
         <h3>Driver</h3>
-        <button><FontAwesomeIcon icon="fa-solid fa-plus" />Add New Driver</button>
+        <button onClick={handleGetDriverForm}><FontAwesomeIcon icon="fa-solid fa-plus" />Add New Driver</button>
       </div>
       <div className="driver-list-container">
         {drivers.map((driver) => (
@@ -84,7 +96,9 @@ const DriverListSection = () => {
             key={driver._id}
             onClick={() => handleGetSelectedDriver(driver._id)}
           >
-            <img src={DriversImage} alt="image of the driver" />
+            <div className="driverProfile">
+              <img src={driver.profileImg || DriversImage} alt="image of the driver" />
+            </div>
             <div className="driver-detail-section">
               <p>Driver: <b>{driver.fullName}</b></p>
               <div className="driver-icon">
@@ -124,6 +138,7 @@ const DriverListSection = () => {
           </div>
         ))}
       </div>
+      {driverForm && <AddDriversection onClick={handleRemoveDriverForm} setDriverForm={setDriverForm} />}
     </section>
   );
 };

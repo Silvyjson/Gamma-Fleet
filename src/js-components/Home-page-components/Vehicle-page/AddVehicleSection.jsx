@@ -138,7 +138,6 @@ const AddVehicleSection = ({ onClick, setVehicleForm }) => {
                             label="Product type"
                             name="productType"
                             value={formData.productType}
-                            type="text"
                             options={["Sedan", "SUV", "Truck", "Van", "Coupe", "Coach"]}
                             onChange={handleInputChange}
                             required
