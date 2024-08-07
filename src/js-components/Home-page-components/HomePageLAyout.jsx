@@ -8,13 +8,15 @@ const HomePageLAyout = () => {
     useAuth();
 
     return (
-        <section className="homepages">
-            <HomePageNav />
-            <div className="homepage-dashboard-container">
-                <HomePageHeader />
-                <main>
-                    <Outlet />
-                </main>
+        <section className="HP">
+            <div className="homepages">
+                <HomePageNav />
+                <div className="homepage-dashboard-container">
+                    <HomePageHeader />
+                    <main>
+                        <Outlet />
+                    </main>
+                </div>
             </div>
         </section>
     )
