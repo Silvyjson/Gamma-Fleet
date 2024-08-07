@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Cookies from 'react-cookies';
 import axios from 'axios';
 import ViewVehiclesection from "../../Home-page-components/Vehicle-page/ViewVehiclesection";
@@ -13,31 +13,31 @@ const VehiclePage = () => {
     const [selectedVehicle, setSelectedVehicle] = useState(null);
     const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        const fetchVehicles = async () => {
-            try {
-                const token = Cookies.load('token');
-                const response = await axios.get('https://gamma-fleet-backend.onrender.com/api/get-vehicle', {
-                    withCredentials: true,
-                    headers: {
-                        Authorization: `Bearer ${token}`
-                    }
-                });
-                const fetchedVehicles = response.data.vehicles;
-                setVehicles(fetchedVehicles);
-
-                if (fetchedVehicles.length > 0 && !selectedVehicle) {
-                    setSelectedVehicle(fetchedVehicles[0]);
+    const fetchVehicles = useCallback(async () => {
+        try {
+            const token = Cookies.load('token');
+            const response = await axios.get('https://gamma-fleet-backend.onrender.com/api/get-vehicle', {
+                withCredentials: true,
+                headers: {
+                    Authorization: `Bearer ${token}`
                 }
-            } catch (error) {
-                console.error('There was an error fetching the vehicles!', error);
-            } finally {
-                setLoading(false);
-            }
-        };
+            });
+            const fetchedVehicles = response.data.vehicles;
+            setVehicles(fetchedVehicles);
 
-        fetchVehicles();
+            if (fetchedVehicles.length > 0 && !selectedVehicle) {
+                setSelectedVehicle(fetchedVehicles[0]);
+            }
+        } catch (error) {
+            console.error('There was an error fetching the vehicles!', error);
+        } finally {
+            setLoading(false);
+        }
     }, [selectedVehicle]);
+
+    useEffect(() => {
+        fetchVehicles();
+    }, [fetchVehicles, selectedVehicle]);
 
     const handleGetVehicleForm = () => {
         setVehicleForm(true);
@@ -45,6 +45,7 @@ const VehiclePage = () => {
 
     const handleCancelForm = () => {
         setVehicleForm(false);
+        fetchVehicles(); // Refresh the vehicle list after closing the form
     };
 
     const handleVehicleSelect = (vehicle) => {

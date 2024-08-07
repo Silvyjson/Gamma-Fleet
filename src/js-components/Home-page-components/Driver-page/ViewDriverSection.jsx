@@ -8,18 +8,20 @@ import vehicleImage from "../../../assets/bus-image.png";
 import PropTypes from "prop-types";
 import DriverTripTable from "./DriverTripTable";
 
-const ViewDriverSection = ({ driver, onClick }) => {
+const ViewDriverSection = ({ driver, onReturn }) => {
 
     const { fullName, driverId, licenseNumber, performanceRate, assignedVehicle } = driver;
 
     return (
         <section>
             <div className="driver-section-top">
-                <div className="arrow-return" onClick={onClick}><FontAwesomeIcon icon="fa-solid fa-arrow-left" /></div>
-                <button><FontAwesomeIcon icon="fa-solid fa-plus" />Add New Driver</button>
+                <div className="arrow-return" onClick={onReturn}><FontAwesomeIcon icon="fa-solid fa-arrow-left" /></div>
+                <button className="deletedriver"><FontAwesomeIcon icon="fa-solid fa-trash" /> Delete Driver</button>
             </div>
             <div className="driver-list-content">
-                <img src={DriversImage} alt="image of the driver" />
+                <div className="driverProfile">
+                    <img src={driver.profileImg || DriversImage} alt="image of the driver" />
+                </div>
                 <div className="driver-detail-section">
                     <p>Driver: <b>{fullName}</b></p>
                     <div className="driver-icon">
@@ -64,7 +66,7 @@ const ViewDriverSection = ({ driver, onClick }) => {
 
 ViewDriverSection.propTypes = {
     driver: PropTypes.object,
-    onClick: PropTypes.func,
+    onReturn: PropTypes.func,
 };
 
 export default ViewDriverSection
