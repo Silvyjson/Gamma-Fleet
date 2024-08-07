@@ -74,6 +74,7 @@ export const Select = ({ label, name, value, options, onChange, className }) => 
       name={name}
       value={value}
       className={`selectStyle ${className}`}
+      required
       onChange={onChange} >
       <option value="" disabled>Enter</option>
       {options.map((option, index) => (
