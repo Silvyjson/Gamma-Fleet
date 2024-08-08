@@ -84,7 +84,6 @@ const SignUpPage = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
-        Cookies.remove('token', { path: '/Gamma-Fleet/' });
         try {
             const response = await axios.post('https://gamma-fleet-backend.onrender.com/api/register-client', {
                 email: formData.email,
@@ -356,6 +355,7 @@ const SignUpPage = () => {
                                         onChange={(e) => handleOtpChange(e, i)}
                                         maxLength="1"
                                         className='otp-number'
+                                        required
                                     />
                                 ))}
                             </div>
