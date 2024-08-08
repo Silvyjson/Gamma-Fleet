@@ -73,6 +73,7 @@ const SignUpPage = () => {
             return;
         }
         setStep(prevStep => prevStep + 1);
+        setMessage("");
     };
 
     const handlePrevious = (e) => {
@@ -80,11 +81,10 @@ const SignUpPage = () => {
         setStep(prevStep => prevStep - 1);
     };
 
-    Cookies.remove('token', { path: '/Gamma-Fleet/' });
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
+        Cookies.remove('token', { path: '/Gamma-Fleet/' });
         try {
             const response = await axios.post('https://gamma-fleet-backend.onrender.com/api/register-client', {
                 email: formData.email,
@@ -97,7 +97,7 @@ const SignUpPage = () => {
                 withCredentials: true
             });
             setLoading(false);
-            const token = response.data.token;
+            const token = await response.data.token;
             Cookies.save('token', token, { path: '/Gamma-Fleet/signUp-page' });
             setStep(prevStep => prevStep + 1);
         } catch (error) {
@@ -135,7 +135,7 @@ const SignUpPage = () => {
             });
             setLoading(false);
             Cookies.remove('token', { path: '/Gamma-Fleet/signUp-page' });
-            const newToken = response.data.token;
+            const newToken = await response.data.token;
             Cookies.save('token', newToken, { path: '/Gamma-Fleet/' });
             navigate("/Gamma-Fleet/dashboard-page");
         } catch (error) {
