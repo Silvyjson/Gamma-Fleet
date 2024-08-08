@@ -81,10 +81,6 @@ const SignUpPage = () => {
         setStep(prevStep => prevStep - 1);
     };
 
-    Cookies.load('token');
-
-    Cookies.remove('token', { path: '/Gamma-Fleet/' });
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
@@ -176,7 +172,7 @@ const SignUpPage = () => {
 
         if (!token) {
             setMessage("Invalid token");
-            setLoading(false);
+            setLoadingOTP(false);
             return;
         }
 
