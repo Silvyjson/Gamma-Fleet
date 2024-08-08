@@ -80,13 +80,6 @@ const SignUpPage = () => {
         setStep(prevStep => prevStep - 1);
     };
 
-    const token = Cookies.load('token');
-
-    if (!token) {
-        setMessage("Invalid token");
-        return;
-    }
-
     Cookies.remove('token', { path: '/Gamma-Fleet/' });
 
     const handleSubmit = async (e) => {
@@ -124,7 +117,13 @@ const SignUpPage = () => {
         setLoading(true);
         const otp = formData.otp1 + formData.otp2 + formData.otp3 + formData.otp4;
 
-        Cookies.load('token');
+        const token = Cookies.load('token');
+
+        if (!token) {
+            setMessage("Invalid token");
+            return;
+        }
+
         try {
             const response = await axios.post('https://gamma-fleet-backend.onrender.com/api/verify-client', {
                 otp: otp
@@ -167,6 +166,13 @@ const SignUpPage = () => {
     const handleGenerateOTP = async () => {
 
         setLoadingOTP(true);
+
+        const token = Cookies.load('token');
+
+        if (!token) {
+            setMessage("Invalid token");
+            return;
+        }
 
         try {
             await axios.patch('https://gamma-fleet-backend.onrender.com/api/generate-new-otp', {}, {
