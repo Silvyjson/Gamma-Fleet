@@ -13,8 +13,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const SignUpPage = () => {
     const [step, setStep] = useState(1);
+    const [countdown, setCountdown] = useState(5);
     const [message, setMessage] = useState(null);
     const [loading, setLoading] = useState(false);
+    const [loadingOTP, setLoadingOTP] = useState(false);
+    const [otpSent, setOTPSent] = useState(null);
     const [formData, setFormData] = useState({
         email: '',
         password: '',
@@ -102,7 +105,7 @@ const SignUpPage = () => {
             if (error) {
                 setMessage(error.response?.data?.message || error.message);
             } else {
-                setMessage(null);
+                setMessage("");
             }
         } finally {
             setLoading(false);
@@ -165,25 +168,41 @@ const SignUpPage = () => {
             setMessage("Invalid token");
             return;
         }
+        setLoadingOTP(true);
 
         try {
-            const response = await axios.patch('https://gamma-fleet-backend.onrender.com/api/generate-new-otp', {
-            }, {
+            await axios.patch('https://gamma-fleet-backend.onrender.com/api/generate-new-otp', {}, {
                 withCredentials: true,
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
             });
-            console.log(response.data.message);
-            setMessage("OTP has been sent to your email");
+
+            setCountdown(5);
+            setOTPSent("OTP sent");
+
+            const countdownInterval = setInterval(() => {
+                setCountdown(prevCountdown => {
+                    if (prevCountdown <= 1) {
+                        clearInterval(countdownInterval);
+                        setOTPSent(null);
+                        return 0;
+                    }
+                    setOTPSent(`OTP sent (${prevCountdown - 1}s)`);
+                    return prevCountdown - 1;
+                });
+            }, 1000);
         } catch (error) {
             if (error) {
                 setMessage(error.response?.data?.message || error.message);
             } else {
                 setMessage(null);
             }
+        } finally {
+            setLoadingOTP(false);
         }
     }
+
 
     return (
         <section className='entry-form-section'>
@@ -337,7 +356,7 @@ const SignUpPage = () => {
                                 ))}
                             </div>
                             <Button type="submit" label={loading ? <FontAwesomeIcon icon="fa-solid fa-spinner" size="1x" spin /> : "Verify"} />
-                            <p className='p-link'>Didn’t get the code? <b onClick={handleGenerateOTP}>Click to resend</b></p>
+                            <p className='p-link'>Didn’t get the code? <b onClick={handleGenerateOTP}>{loadingOTP ? (<FontAwesomeIcon icon="fa-solid fa-circle-notch" spin size="1x" />) : (otpSent ? otpSent : "Click to resend")}</b></p>
                         </div>
                         <div className='entry-form-image'>
                             <img src={verifyImage} alt="image for creating account" />

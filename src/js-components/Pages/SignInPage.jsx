@@ -26,6 +26,8 @@ const SignInPage = () => {
         });
     };
 
+    const token = Cookies.load('token');
+
     Cookies.remove('token', { path: '/Gamma-Fleet/' });
 
     const handleSubmit = async (e) => {
@@ -42,6 +44,7 @@ const SignInPage = () => {
             navigate("/Gamma-Fleet/dashboard-page");
         } catch (error) {
             setLoading(false)
+            console.log({ login: token })
             console.log('Login error:', error.response.data.message || error.message);
             if (error) {
                 setMessage(error.response?.data?.message || error.message);

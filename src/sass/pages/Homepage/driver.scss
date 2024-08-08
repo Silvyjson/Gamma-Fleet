@@ -22,7 +22,7 @@
 }
 
 .driver-list-content {
-  @include display-style($justify: space-around);
+  @include display-style();
   padding: 20px;
   gap: 20px;
   border-radius: 20px;
