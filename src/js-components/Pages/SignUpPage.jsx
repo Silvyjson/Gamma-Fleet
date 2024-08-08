@@ -120,6 +120,7 @@ const SignUpPage = () => {
 
         if (!token) {
             setMessage("Invalid token");
+            setLoading(false);
             return;
         }
 
@@ -170,6 +171,7 @@ const SignUpPage = () => {
 
         if (!token) {
             setMessage("Invalid token");
+            setLoading(false);
             return;
         }
 
