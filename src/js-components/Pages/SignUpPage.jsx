@@ -81,7 +81,9 @@ const SignUpPage = () => {
         setStep(prevStep => prevStep - 1);
     };
 
-    Cookies.remove('token', { path: '/' });
+    Cookies.load('token');
+
+    Cookies.remove('token', { path: '/Gamma-Fleet/' });
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -99,7 +101,8 @@ const SignUpPage = () => {
             });
             setLoading(false);
             const token = await response.data.token;
-            Cookies.save('token', token, { path: '/' });
+            Cookies.save('token', token, { path: '/Gamma-Fleet/' });
+            console.log(token);
             setStep(prevStep => prevStep + 1);
         } catch (error) {
             setLoading(false);
@@ -136,9 +139,9 @@ const SignUpPage = () => {
                 }
             });
             setLoading(false);
-            Cookies.remove('token', { path: '/' });
+            Cookies.remove('token', { path: '/Gamma-Fleet/' });
             const newToken = await response.data.token;
-            Cookies.save('token', newToken, { path: '/' });
+            Cookies.save('token', newToken, { path: '/Gamma-Fleet/' });
             navigate("/Gamma-Fleet/dashboard-page");
         } catch (error) {
             setLoading(false);
