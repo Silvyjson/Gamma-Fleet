@@ -28,7 +28,7 @@ const SignInPage = () => {
 
     const token = Cookies.load('token');
 
-    Cookies.remove('token', { path: '/Gamma-Fleet/' });
+    Cookies.remove('token', { path: '/' });
 
     const handleSubmit = async (e) => {
         e.preventDefault();

@@ -81,6 +81,10 @@ const SignUpPage = () => {
         setStep(prevStep => prevStep - 1);
     };
 
+    Cookies.load('token');
+
+    Cookies.remove('token', { path: '/' });
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
