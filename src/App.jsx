@@ -17,6 +17,7 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { fab } from "@fortawesome/free-brands-svg-icons";
 import { fas } from "@fortawesome/free-solid-svg-icons";
 import { far } from "@fortawesome/free-regular-svg-icons";
+import LiveTrackPage from "./js-components/Pages/Home-pages/LiveTrackPage";
 library.add(fab, fas, far);
 
 const App = () => {
@@ -30,6 +31,7 @@ const App = () => {
           <Route path="/Gamma-Fleet/dashboard-page" element={<DashboardPage />} />
           <Route path="/Gamma-Fleet/vehicle-page" element={<VehiclePage />} />
           <Route path="/Gamma-Fleet/driver-page" element={<DriverPage />} />
+          <Route path="/Gamma-Fleet/liveTrack-page" element={<LiveTrackPage />} />
           <Route path="/Gamma-Fleet/fillUp-page" element={<FillUpPage />} />
           <Route path="/Gamma-Fleet/maintenance-page" element={<MaintenancePage />} />
           <Route path="/Gamma-Fleet/user-management-page" element={<UserManagementPage />} />

@@ -2,24 +2,16 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import logo from '../../../assets/GAMMA_LOGO.png';
-import id_card from '../../../assets/id_card.png';
-import id_card_s from '../../../assets/id_card (1).png';
-import car from '../../../assets/mingcute_car-line.png';
-import car_s from '../../../assets/mingcute_car-line (1).png';
-import officer from '../../../assets/mdi_officer.png';
-import officer_s from '../../../assets/mdi_officer (1).png';
-import funnel from '../../../assets/iconamoon_funnel.png';
-import funnel_s from '../../../assets/iconamoon_funnel (1).png';
-import tools from '../../../assets/codicon_tools.png';
-import tools_s from '../../../assets/codicon_tools (1).png';
-import user from '../../../assets/mdi_user-outline.png';
-import user_s from '../../../assets/mdi_user-outline (1).png';
-import money from '../../../assets/tdesign_money.png';
-import money_s from '../../../assets/tdesign_money (1).png';
-import train from '../../../assets/ph_train.png';
-import train_s from '../../../assets/ph_train (1).png';
-import setting from '../../../assets/carbon_settings.png';
-import setting_s from '../../../assets/carbon_settings (1).png';
+import id_card from '../../../assets/svg-icon/id_card.svg';
+import car from '../../../assets/svg-icon/mingcute_car-line.svg';
+import driver from '../../../assets/svg-icon/healthicons_truck-driver-outline.svg';
+import lTrack from '../../../assets/svg-icon/carbon_location.svg';
+import funnel from '../../../assets/svg-icon/iconamoon_funnel.svg';
+import tools from '../../../assets/svg-icon/codicon_tools.svg';
+import user from '../../../assets/svg-icon/mdi_user-outline.svg';
+import money from '../../../assets/svg-icon/tdesign_money.svg';
+import train from '../../../assets/svg-icon/ph_train.svg';
+import setting from '../../../assets/svg-icon/carbon_settings.svg';
 import guarantee from '../../../assets/Guarantee.png';
 
 const HomePageNav = () => {
@@ -31,55 +23,51 @@ const HomePageNav = () => {
         {
             title: "Dashboard",
             icon: id_card,
-            selectedIcon: id_card_s,
             nav: "/Gamma-Fleet/dashboard-page"
         },
         {
             title: "Vehicle",
             icon: car,
-            selectedIcon: car_s,
             nav: "/Gamma-Fleet/vehicle-page"
         },
         {
             title: "Driver",
-            icon: officer,
-            selectedIcon: officer_s,
+            icon: driver,
             nav: "/Gamma-Fleet/driver-page"
+        },
+        {
+            title: "Live Track",
+            icon: lTrack,
+            nav: "/Gamma-Fleet/liveTrack-page"
         },
         {
             title: "Fill up",
             icon: funnel,
-            selectedIcon: funnel_s,
             nav: "/Gamma-Fleet/fillUp-page"
         },
         {
             title: "Maintenance",
             icon: tools,
-            selectedIcon: tools_s,
             nav: "/Gamma-Fleet/maintenance-page"
         },
         {
             title: "User Management",
             icon: user,
-            selectedIcon: user_s,
             nav: "/Gamma-Fleet/user-management-page"
         },
         {
             title: "Report",
             icon: money,
-            selectedIcon: money_s,
             nav: "/Gamma-Fleet/report-page"
         },
         {
             title: "Trips",
             icon: train,
-            selectedIcon: train_s,
             nav: "/Gamma-Fleet/trips-page"
         },
         {
             title: "Settings",
             icon: setting,
-            selectedIcon: setting_s,
             nav: "/Gamma-Fleet/settings-page"
         }
     ]);
@@ -137,7 +125,7 @@ const HomePageNav = () => {
                                 onClick={() => navigate(item.nav)}
                             >
                                 <span>
-                                    <img src={isSelected ? item.selectedIcon : item.icon} alt={`${item.title} icon`} />
+                                    <img src={item.icon} alt={`${item.title} icon`} className={isSelected ? 'selectedIcon' : ''} />
                                     <p className={`p-names ${isSelected ? 'selected' : ''}`}>{item.title}</p>
                                 </span>
                                 <div className={isSelected ? 'drag' : ''} onClick={handleGetDash}>
