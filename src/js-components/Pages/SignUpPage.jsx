@@ -185,7 +185,7 @@ const SignUpPage = () => {
             });
 
             setCountdown(5);
-            setOTPSent("OTP sent");
+            setOTPSent(`OTP sent (${countdown}s)`);
 
             const countdownInterval = setInterval(() => {
                 setCountdown(prevCountdown => {
