@@ -83,7 +83,8 @@ const SignUpPage = () => {
 
     Cookies.load('token');
 
-    Cookies.remove('token', { path: '/' });
+    Cookies.remove('token', { path: '/Gamma-Fleet/' });
+    Cookies.remove('token', { path: '/Gamma-Fleet/signUp-page' });
 
     const handleSubmit = async (e) => {
         e.preventDefault();
