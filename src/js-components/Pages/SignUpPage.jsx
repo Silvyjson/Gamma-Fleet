@@ -96,9 +96,7 @@ const SignUpPage = () => {
                 withCredentials: true
             });
             setLoading(false);
-            const token = await response.data.token;
-            Cookies.save('token', token, { path: '/Gamma-Fleet/' });
-            console.log(token);
+            Cookies.save('token', response.data.token, { path: '/Gamma-Fleet/' });
             setStep(prevStep => prevStep + 1);
         } catch (error) {
             setLoading(false);
@@ -126,7 +124,7 @@ const SignUpPage = () => {
         }
 
         try {
-            const response = await axios.post('https://gamma-fleet-backend.onrender.com/api/verify-client', {
+            await axios.post('https://gamma-fleet-backend.onrender.com/api/verify-client', {
                 otp: otp
             }, {
                 withCredentials: true,
@@ -135,9 +133,6 @@ const SignUpPage = () => {
                 }
             });
             setLoading(false);
-            Cookies.remove('token', { path: '/Gamma-Fleet/' });
-            const newToken = await response.data.token;
-            Cookies.save('token', newToken, { path: '/Gamma-Fleet/' });
             navigate("/Gamma-Fleet/dashboard-page");
         } catch (error) {
             setLoading(false);
