@@ -97,9 +97,9 @@ const SignUpPage = () => {
             }, {
                 withCredentials: true
             });
-            setLoading(false);
-            setStep(prevStep => prevStep + 1);
             Cookies.save('token', response.data.token, { path: '/Gamma-Fleet/' });
+            console.log(response.data.token);
+            setStep(prevStep => prevStep + 1);
         } catch (error) {
             setLoading(false);
             if (error) {
@@ -112,12 +112,12 @@ const SignUpPage = () => {
         }
     };
 
+    const token = Cookies.load('token');
+
     const handleVerify = async (e) => {
         e.preventDefault();
         setLoading(true);
         const otp = formData.otp1 + formData.otp2 + formData.otp3 + formData.otp4;
-
-        const token = Cookies.load('token');
 
         if (!token) {
             setMessage("Invalid token");
@@ -164,8 +164,6 @@ const SignUpPage = () => {
     const handleGenerateOTP = async () => {
 
         setLoadingOTP(true);
-
-        const token = Cookies.load('token');
 
         if (!token) {
             setMessage("Invalid token");
