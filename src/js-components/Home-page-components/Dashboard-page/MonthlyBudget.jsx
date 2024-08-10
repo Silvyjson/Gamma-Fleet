@@ -1,4 +1,5 @@
 import totalExpensesImage from "../../../assets/totalExpensesImage.png"
+import monthlyBudgetImage from "../../../assets/monthlyBudgetImage.png"
 
 const MonthlyBudget = () => {
     return (
@@ -7,7 +8,7 @@ const MonthlyBudget = () => {
                 <h3>Monthly Budget</h3>
                 <div className="budget-container">
                     <div className="bd-image">
-                        <img src={totalExpensesImage} alt="monthly budget icon" />
+                        <img src={monthlyBudgetImage} alt="monthly budget icon" />
                     </div>
                     <div className="bd-detail">
                         <p>5,000,000 NGN</p>
