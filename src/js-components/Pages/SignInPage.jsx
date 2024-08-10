@@ -26,9 +26,6 @@ const SignInPage = () => {
         });
     };
 
-
-    Cookies.remove('token', { path: '/Gamma-Fleet/' });
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);

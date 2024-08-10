@@ -81,8 +81,6 @@ const SignUpPage = () => {
         setStep(prevStep => prevStep - 1);
     };
 
-    Cookies.remove('token', { path: '/Gamma-Fleet/' });
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
@@ -98,7 +96,6 @@ const SignUpPage = () => {
                 withCredentials: true
             });
             Cookies.save('token', response.data.token, { path: '/Gamma-Fleet/' });
-            console.log(response.data.token);
             setStep(prevStep => prevStep + 1);
         } catch (error) {
             setLoading(false);

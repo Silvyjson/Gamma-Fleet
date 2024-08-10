@@ -2,10 +2,11 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LandingPage from './js-components/Pages/LandingPage';
 import SignUpPage from "./js-components/Pages/SignUpPage";
 import SignInPage from "./js-components/Pages/SignInPage";
-import HomePageLAyout from "./js-components/Home-page-components/HomePageLAyout";
+import HomePageLAyout from "./js-components/Home-page-components/components/HomePageLAyout";
 import DashboardPage from "./js-components/Pages/Home-pages/DashboardPage";
 import VehiclePage from "./js-components/Pages/Home-pages/VehiclePage";
 import DriverPage from "./js-components/Pages/Home-pages/DriverPage";
+import LiveTrackPage from "./js-components/Pages/Home-pages/LiveTrackPage";
 import FillUpPage from "./js-components/Pages/Home-pages/FillUpPage";
 import MaintenancePage from "./js-components/Pages/Home-pages/MaintenancePage";
 import UserManagementPage from "./js-components/Pages/Home-pages/UserManagementPage";
@@ -17,7 +18,6 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { fab } from "@fortawesome/free-brands-svg-icons";
 import { fas } from "@fortawesome/free-solid-svg-icons";
 import { far } from "@fortawesome/free-regular-svg-icons";
-import LiveTrackPage from "./js-components/Pages/Home-pages/LiveTrackPage";
 library.add(fab, fas, far);
 
 const App = () => {
