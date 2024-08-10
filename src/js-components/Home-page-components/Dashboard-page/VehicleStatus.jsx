@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Cookies from 'react-cookies';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const VehicleStatus = () => {
     const [vehicles, setVehicles] = useState([]);
@@ -60,10 +61,6 @@ const VehicleStatus = () => {
         fetchVehicles();
     }, []);
 
-    if (loading) {
-        return <p>Loading...</p>;
-    }
-
     // Calculate the total number of vehicles
     const totalVehicles = vehicles.length;
 
@@ -79,42 +76,45 @@ const VehicleStatus = () => {
 
                 return (
                     <div key={index} className="vehicle-status-container">
-                        <div className="status-circle">
-                            <svg width="100" height="100" xmlns="http://www.w3.org/2000/svg">
-                                <circle
-                                    cx="50"
-                                    cy="50"
-                                    r="40"
-                                    stroke={strokeColor}
-                                    strokeWidth={strokeWidth}
-                                    fill="white"
-                                    strokeDasharray={dashArray}
-                                    strokeDashoffset={dashOffset}
-                                />
-                                <circle
-                                    cx="50"
-                                    cy="50"
-                                    r="40"
-                                    stroke="gray"
-                                    strokeWidth="2"
-                                    fill="none"
-                                    strokeDasharray={dashArray}
-                                    strokeDashoffset="0"
-                                    style={{ visibility: statusCounts[status] > 0 ? "hidden" : "visible" }}
-                                />
-                            </svg>
-                            <div className="status-circle-inner">
-                                {statusCounts[status]}
-                            </div>
-                        </div>
-                        <div className="vehicle-status-details">
-                            <span
-                                className="status-color"
-                                style={{ backgroundColor: getStatusColor(status) }}
-                            />
-                            <h2 style={{ color: getStatusColor(status) }}>{status}</h2>
-                            <p>{statusCounts[status]} vehicles</p>
-                        </div>
+                        {loading ? (<p><FontAwesomeIcon icon="fa-solid fa-circle-notch" spin size="1x" /></p>) :
+                            (<>
+                                <div className="status-circle">
+                                    <svg width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+                                        <circle
+                                            cx="50"
+                                            cy="50"
+                                            r="40"
+                                            stroke={strokeColor}
+                                            strokeWidth={strokeWidth}
+                                            fill="white"
+                                            strokeDasharray={dashArray}
+                                            strokeDashoffset={dashOffset}
+                                        />
+                                        <circle
+                                            cx="50"
+                                            cy="50"
+                                            r="40"
+                                            stroke="gray"
+                                            strokeWidth="2"
+                                            fill="none"
+                                            strokeDasharray={dashArray}
+                                            strokeDashoffset="0"
+                                            style={{ visibility: statusCounts[status] > 0 ? "hidden" : "visible" }}
+                                        />
+                                    </svg>
+                                    <div className="status-circle-inner">
+                                        {statusCounts[status]}
+                                    </div>
+                                </div>
+                                <div className="vehicle-status-details">
+                                    <span
+                                        className="status-color"
+                                        style={{ backgroundColor: getStatusColor(status) }}
+                                    />
+                                    <h2 style={{ color: getStatusColor(status) }}>{status}</h2>
+                                    <p>{statusCounts[status]} vehicles</p>
+                                </div>
+                            </>)}
                     </div>
                 );
             })}
