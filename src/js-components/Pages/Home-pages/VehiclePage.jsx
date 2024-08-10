@@ -1,11 +1,11 @@
 import { useState, useEffect, useCallback } from "react";
 import Cookies from 'react-cookies';
 import axios from 'axios';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ViewVehiclesection from "../../Home-page-components/Vehicle-page/ViewVehiclesection";
-import LiveLocationSection from "../../Home-page-components/Vehicle-page/LiveLocationSection";
 import VehicleListSection from "../../Home-page-components/Vehicle-page/VehicleListSection";
 import AddVehicleSection from "../../Home-page-components/Vehicle-page/AddVehicleSection";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import LiveLocationSection from "../../Home-page-components/LiveLocationSection";
 
 const VehiclePage = () => {
     const [vehicleForm, setVehicleForm] = useState(false);
@@ -68,7 +68,7 @@ const VehiclePage = () => {
                     <LiveLocationSection />
                 </div>
             </div>
-            {vehicleForm && <AddVehicleSection setVehicleForm={setVehicleForm} onClick={handleCancelForm} />}
+            {vehicleForm && <AddVehicleSection setVehicleForm={setVehicleForm} onClick={handleCancelForm} fetchVehicles={fetchVehicles} />}
         </section>
     );
 };

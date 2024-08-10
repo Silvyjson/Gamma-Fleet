@@ -5,7 +5,7 @@ import { Input, Select } from '../../Other-component/FormProps';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PropTypes from "prop-types";
 
-const AddVehicleSection = ({ onClick, setVehicleForm }) => {
+const AddVehicleSection = ({ onClick, setVehicleForm, fetchVehicles }) => {
     const [message, setMessage] = useState(null);
     const [loading, setLoading] = useState(false);
     const [formData, setFormData] = useState({
@@ -90,8 +90,8 @@ const AddVehicleSection = ({ onClick, setVehicleForm }) => {
                 }
             });
             setLoading(false);
-            setMessage('Vehicle added successfully!');
             setVehicleForm(false);
+            fetchVehicles()
         } catch (error) {
             setLoading(false);
             console.error('There was an error adding the vehicle!', error);
@@ -138,7 +138,7 @@ const AddVehicleSection = ({ onClick, setVehicleForm }) => {
                             label="Product type"
                             name="productType"
                             value={formData.productType}
-                            options={["Sedan", "SUV", "Truck", "Van", "Coupe", "Coach"]}
+                            options={["Sedan", "SUV", "Truck", "Van", "Coach"]}
                             onChange={handleInputChange}
                             required
                         />
@@ -262,6 +262,7 @@ const AddVehicleSection = ({ onClick, setVehicleForm }) => {
 AddVehicleSection.propTypes = {
     onClick: PropTypes.func.isRequired,
     setVehicleForm: PropTypes.func,
+    fetchVehicles: PropTypes.func
 };
 
 export default AddVehicleSection;

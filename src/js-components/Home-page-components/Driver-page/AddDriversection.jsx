@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import profileImag from '../../../assets/Mask Group.png';
 import PropTypes from 'prop-types';
 
-const AddDriversection = ({ onClick, setDriverForm }) => {
+const AddDriversection = ({ onClick, setDriverForm, fetchDrivers }) => {
     const [message, setMessage] = useState(null);
     const [loading, setLoading] = useState(false);
     const [formData, setFormData] = useState({
@@ -53,6 +53,12 @@ const AddDriversection = ({ onClick, setDriverForm }) => {
         setLoading(true);
         setMessage(null);
 
+        if (!formData.profileImg) {
+            setMessage('Please upload a profile picture');
+            setLoading(false)
+            return;
+        }
+
         try {
             await axios.post('https://gamma-fleet-backend.onrender.com/api/register-driver', formData, {
                 withCredentials: true,
@@ -62,6 +68,7 @@ const AddDriversection = ({ onClick, setDriverForm }) => {
             });
 
             setDriverForm(false);
+            fetchDrivers();
         } catch (error) {
             setMessage(error.response?.data?.message || error.message);
         } finally {
@@ -93,7 +100,6 @@ const AddDriversection = ({ onClick, setDriverForm }) => {
                             style={{ display: "none" }}
                             ref={fileInputRef}
                             onChange={handleFileChange}
-                            required
                         />
                     </div>
                     <div className='add-vehicle-form-content form-1'>
@@ -165,7 +171,8 @@ const AddDriversection = ({ onClick, setDriverForm }) => {
 
 AddDriversection.propTypes = {
     onClick: PropTypes.func,
-    setDriverForm: PropTypes.func
+    setDriverForm: PropTypes.func,
+    fetchDrivers: PropTypes.func
 };
 
 export default AddDriversection;

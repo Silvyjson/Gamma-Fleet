@@ -1,5 +1,6 @@
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import Cookies from 'react-cookies';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import logo from '../../../assets/GAMMA_LOGO.png';
 import id_card from '../../../assets/svg-icon/id_card.svg';
@@ -109,6 +110,12 @@ const HomePageNav = () => {
         }
     }, [isExpanded]);
 
+    const handleLogOut = () => {
+        Cookies.remove('token', { path: '/Gamma-Fleet/' });
+        Cookies.remove('token', { path: '/' });
+        navigate("/Gamma-Fleet/signIn-page")
+    };
+
     return (
         <section className="homePageMenu_section">
             <div className='homepage-logo'>
@@ -143,7 +150,7 @@ const HomePageNav = () => {
                         <img src={guarantee} alt="guarantee icon" />
                         <p>View plans</p>
                     </span>
-                    <span className='logout' onClick={() => navigate("/Gamma-Fleet/signIn-page")}>
+                    <span className='logout' onClick={handleLogOut}>
                         <FontAwesomeIcon icon="fa-solid fa-right-from-bracket" />
                         <p>Logout</p>
                     </span>

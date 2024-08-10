@@ -4,13 +4,15 @@ import phonecall from "../../../assets/call.png";
 import message from "../../../assets/message.png";
 import camera from "../../../assets/camera.png";
 import location from "../../../assets/carbon_location.png";
-import vehicleImage from "../../../assets/bus-image.png";
 import PropTypes from "prop-types";
 import DriverTripTable from "./DriverTripTable";
+import VehicleImage from "../components/VehicleImage";
+
 
 const ViewDriverSection = ({ driver, onReturn }) => {
 
     const { fullName, driverId, licenseNumber, performanceRate, assignedVehicle } = driver;
+    const vehicleImage = VehicleImage(driver.assignedVehicle.productType);
 
     return (
         <section>
@@ -57,7 +59,7 @@ const ViewDriverSection = ({ driver, onReturn }) => {
                         </span>
                     </div>
                 </div>
-                <img src={vehicleImage} alt="image of a vehicle" />
+                <img src={vehicleImage} alt="image of a vehicle" className="vehi-image" />
             </div>
             <DriverTripTable />
         </section>

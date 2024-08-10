@@ -30,7 +30,7 @@
   flex-direction: column;
   gap: 10px;
   width: 100%;
-  height: 100vh;
+  height: 95vh;
   border-right: 1px solid #ccc;
   overflow-y: scroll;
   padding: 0 20px;
@@ -219,6 +219,7 @@
 
     img {
       width: 100%;
+      height: 250px;
     }
   }
 
@@ -249,25 +250,8 @@
   }
 }
 
-.live-location-section {
-  width: 100%;
-
-  h3 {
-    margin-bottom: 10px;
-  }
-}
-
-.live-location {
-  width: 100%;
-  min-height: 280px;
-  height: 100%;
-  border: 1px solid red;
-  border-radius: 20px;
-
-  img {
-    width: 43vh;
-    width: 100%;
-  }
+.vvd {
+  border: none !important;
 }
 
 .addVehicleSection {

@@ -14,12 +14,10 @@
 }
 
 .homepage-dashboard-container {
-  position: fixed;
-  top: 0;
-  left: 100px;
   width: calc(1536px - 100px);
   height: 702px;
   overflow: hidden;
+  margin-left: 100px;
 }
 
 .homepage-pages {
@@ -81,7 +79,7 @@
 
 .guarantee {
   @include display-style;
-  gap: 10px;
+  gap: 2%;
   background-color: $secondary-color;
   color: $text-color;
   height: 35px;
@@ -213,5 +211,25 @@
       width: 60px;
       height: 60px;
     }
+  }
+}
+
+.live-location-section {
+  width: 100%;
+
+  h3 {
+    margin-bottom: 10px;
+  }
+}
+
+.live-location {
+  width: 100%;
+  min-height: 280px;
+  border: 1px solid red;
+  border-radius: 20px;
+
+  img {
+    width: 100%;
+    height: 280px;
   }
 }

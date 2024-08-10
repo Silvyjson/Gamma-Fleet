@@ -1,8 +1,9 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PropTypes from "prop-types";
-import vehicleImage from "../../../assets/bus-image.png";
+import VehicleImage from "../components/VehicleImage";
 
 const ViewVehiclesection = ({ onClick, vehicle }) => {
+
     if (!vehicle) {
         return (
             <div className="view-vehicle-section">
@@ -13,13 +14,15 @@ const ViewVehiclesection = ({ onClick, vehicle }) => {
                         <FontAwesomeIcon icon="fa-solid fa-plus" /> ADD VEHICLE
                     </button>
                 </div>
-                <div className="view-vehicle-details">
+                <div className="view-vehicle-details vvd">
                 </div>
             </div>
         );
     }
 
     const { vehicleId, vehicleName, status, assignedDriver } = vehicle;
+
+    const vehicleImage = VehicleImage(vehicle.productType);
 
     return (
         <div className="view-vehicle-section">
