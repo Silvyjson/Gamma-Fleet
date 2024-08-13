@@ -1,3 +1,8 @@
+.driver-list-section {
+  width: 100%;
+  height: 100%;
+}
+
 .driver-section-top {
   @include display-style($justify: space-between);
 
@@ -19,6 +24,7 @@
   flex-direction: column;
   gap: 15px;
   margin: 20px 0;
+  height: calc(100% - 50px);
 }
 
 .driver-list-content {

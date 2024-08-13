@@ -24,7 +24,7 @@ const MonthlyBudget = () => {
                         <img src={totalExpensesImage} alt="total Expenses Image" />
                     </div>
                     <div className="bd-detail">
-                        <p>_ _NGN</p>
+                        <p>_ _ NGN</p>
                         <meter value="0" min="0" max="100"></meter>
                         <p>0%</p>
                     </div>

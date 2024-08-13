@@ -17,7 +17,6 @@ const DriverListSection = () => {
   const [loading, setLoading] = useState(false);
   const [driverForm, setDriverForm] = useState(false);
 
-
   const fetchDrivers = async () => {
     const token = Cookies.load('token');
     setLoading(true);
@@ -36,6 +35,7 @@ const DriverListSection = () => {
       setLoading(false);
     }
   };
+
   useEffect(() => {
     fetchDrivers();
   }, []);
@@ -67,7 +67,6 @@ const DriverListSection = () => {
     setSelectedDriver(null);
   };
 
-
   const handleGetDriverForm = () => {
     setDriverForm(true);
   }
@@ -87,61 +86,65 @@ const DriverListSection = () => {
     <section className="driver-list-section">
       <div className="driver-section-top">
         <h3>Driver</h3>
-        <button onClick={handleGetDriverForm}><FontAwesomeIcon icon="fa-solid fa-plus" />Add New Driver</button>
+        <button onClick={handleGetDriverForm}><FontAwesomeIcon icon="fa-solid fa-plus" /> Add New Driver</button>
       </div>
       <div className="driver-list-container">
-        {drivers.map((driver) => {
-          if (!driver) return null;
-          const vehicleImage = VehicleImage(driver.assignedVehicle.productType);
+        {drivers.length > 0 ? (
+          drivers.map((driver) => {
+            if (!driver) return null;
+            const vehicleImage = VehicleImage(driver.assignedVehicle.productType);
 
-          return (
-            <div
-              className="driver-list-content"
-              key={driver._id}
-              onClick={() => handleGetSelectedDriver(driver._id)}
-            >
-              <div className="driverProfile">
-                <img src={driver.profileImg || DriversImage} alt="image of the driver" />
-              </div>
-              <div className="driver-detail-section">
-                <p>Driver: <b>{driver.fullName}</b></p>
-                <div className="driver-icon">
-                  <span>
-                    <img src={phonecall} alt="call icon" />
-                  </span>
-                  <span>
-                    <img src={message} alt="message icon" />
-                  </span>
-                  <span>
-                    <img src={camera} alt="camera icon" />
-                  </span>
-                  <span>
-                    <img src={location} alt="location icon" />
-                  </span>
+            return (
+              <div
+                className="driver-list-content"
+                key={driver._id}
+                onClick={() => handleGetSelectedDriver(driver._id)}
+              >
+                <div className="driverProfile">
+                  <img src={driver.profileImg || DriversImage} alt="image of the driver" />
                 </div>
-                <div className="driver-details">
-                  <span>
-                    <p>ID Number:</p>
-                    <b>ID{driver.driverId}</b>
-                  </span>
-                  <span>
-                    <p>Driver’s License:</p>
-                    <b>{driver.licenseNumber}</b>
-                  </span>
-                  <span>
-                    <p>Performance:</p>
-                    <b>{driver.performanceRate}</b>
-                  </span>
-                  <span>
-                    <p>Currently assigned car:</p>
-                    <b>{driver.assignedVehicle.vehicleName}</b>
-                  </span>
+                <div className="driver-detail-section">
+                  <p>Driver: <b>{driver.fullName}</b></p>
+                  <div className="driver-icon">
+                    <span>
+                      <img src={phonecall} alt="call icon" />
+                    </span>
+                    <span>
+                      <img src={message} alt="message icon" />
+                    </span>
+                    <span>
+                      <img src={camera} alt="camera icon" />
+                    </span>
+                    <span>
+                      <img src={location} alt="location icon" />
+                    </span>
+                  </div>
+                  <div className="driver-details">
+                    <span>
+                      <p>ID Number:</p>
+                      <b>ID{driver.driverId}</b>
+                    </span>
+                    <span>
+                      <p>Driver’s License:</p>
+                      <b>{driver.licenseNumber}</b>
+                    </span>
+                    <span>
+                      <p>Performance:</p>
+                      <b>{driver.performanceRate}</b>
+                    </span>
+                    <span>
+                      <p>Currently assigned car:</p>
+                      <b>{driver.assignedVehicle.vehicleName}</b>
+                    </span>
+                  </div>
                 </div>
+                <img src={vehicleImage} alt="image of a vehicle" className="vehi-image" />
               </div>
-              <img src={vehicleImage} alt="image of a vehicle" className="vehi-image" />
-            </div>
-          )
-        })}
+            )
+          })
+        ) : (
+          <p className="none">No drivers added yet</p>
+        )}
       </div>
       {driverForm && <AddDriversection onClick={handleRemoveDriverForm} setDriverForm={setDriverForm} fetchDrivers={fetchDrivers} />}
     </section>

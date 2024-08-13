@@ -14,7 +14,8 @@ const ViewVehiclesection = ({ onClick, vehicle }) => {
                         <FontAwesomeIcon icon="fa-solid fa-plus" /> ADD VEHICLE
                     </button>
                 </div>
-                <div className="view-vehicle-details vvd">
+                <div className="view-vehicle-details">
+                    <p className="none">No vehicle added yet</p>
                 </div>
             </div>
         );
