@@ -97,6 +97,7 @@ const SignUpPage = () => {
             });
             Cookies.save('token', response.data.token, { path: '/' });
             setStep(prevStep => prevStep + 1);
+            setMessage("");
         } catch (error) {
             setLoading(false);
             if (error) {
