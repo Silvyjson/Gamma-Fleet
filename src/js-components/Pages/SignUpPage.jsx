@@ -95,7 +95,7 @@ const SignUpPage = () => {
             }, {
                 withCredentials: true
             });
-            Cookies.save('token', response.data.token, { path: '/Gamma-Fleet/' });
+            Cookies.save('token', response.data.token, { path: '/' });
             setStep(prevStep => prevStep + 1);
         } catch (error) {
             setLoading(false);
@@ -132,7 +132,7 @@ const SignUpPage = () => {
                 }
             });
             setLoading(false);
-            navigate("/Gamma-Fleet/dashboard-page");
+            navigate("/dashboard-page");
         } catch (error) {
             setLoading(false);
             if (error) {
@@ -205,7 +205,7 @@ const SignUpPage = () => {
     return (
         <section className='entry-form-section'>
             <div className='form-logo'>
-                <img src={logo} alt="gamma fleet logo" onClick={() => navigate("/Gamma-Fleet/")} />
+                <img src={logo} alt="gamma fleet logo" onClick={() => navigate("/")} />
             </div>
             <form className='entry-form-sect' onSubmit={step === 1 ? handleNext : step === 2 ? handleSubmit : handleVerify}>
                 <h1 id='heading'></h1>
@@ -279,7 +279,7 @@ const SignUpPage = () => {
                                 <img src={appleIcon} alt="apple icon" />
                                 <p>Sign in with Apple</p>
                             </div>
-                            <p className='p-link'>Already have an account? <b onClick={() => navigate("/Gamma-Fleet/signIn-page")}>Login</b></p>
+                            <p className='p-link'>Already have an account? <b onClick={() => navigate("/signIn-page")}>Login</b></p>
                         </div>
                         <div className='entry-form-image'>
                             <img src={createAccountImage} alt="image for creating account" />

@@ -96,8 +96,8 @@ const NavSection = () => {
             </ul>
 
             <ul className="navElement navlist">
-                <li onClick={() => navigate("/Gamma-Fleet/signIn-page")}>Login</li>
-                <li onClick={() => navigate("/Gamma-Fleet/signUp-page")}>Create account</li>
+                <li onClick={() => navigate("/signIn-page")}>Login</li>
+                <li onClick={() => navigate("/signUp-page")}>Create account</li>
             </ul>
         </nav>
     )

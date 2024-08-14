@@ -17,7 +17,7 @@ function HeaderSection() {
             This is where innovation drives the road! Monitor, analyze, and elevate your fleet&apos;s performance. Maximize efficiency, minimize costs!
           </p>
 
-          <div className="button" onClick={() => navigate("/Gamma-Fleet/signUp-page")}>
+          <div className="button" onClick={() => navigate("/signUp-page")}>
             <button>Get Started</button>
             <p>Trusted by 50k+ users</p>
             <div className="rate-section">

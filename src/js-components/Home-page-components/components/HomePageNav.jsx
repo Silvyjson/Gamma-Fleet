@@ -24,52 +24,52 @@ const HomePageNav = () => {
         {
             title: "Dashboard",
             icon: id_card,
-            nav: "/Gamma-Fleet/dashboard-page"
+            nav: "/dashboard-page"
         },
         {
             title: "Vehicle",
             icon: car,
-            nav: "/Gamma-Fleet/vehicle-page"
+            nav: "/vehicle-page"
         },
         {
             title: "Driver",
             icon: driver,
-            nav: "/Gamma-Fleet/driver-page"
+            nav: "/driver-page"
         },
         {
             title: "Live Track",
             icon: lTrack,
-            nav: "/Gamma-Fleet/liveTrack-page"
+            nav: "/liveTrack-page"
         },
         {
             title: "Fill up",
             icon: funnel,
-            nav: "/Gamma-Fleet/fillUp-page"
+            nav: "/fillUp-page"
         },
         {
             title: "Maintenance",
             icon: tools,
-            nav: "/Gamma-Fleet/maintenance-page"
+            nav: "/maintenance-page"
         },
         {
             title: "User Management",
             icon: user,
-            nav: "/Gamma-Fleet/user-management-page"
+            nav: "/user-management-page"
         },
         {
             title: "Report",
             icon: money,
-            nav: "/Gamma-Fleet/report-page"
+            nav: "/report-page"
         },
         {
             title: "Trips",
             icon: train,
-            nav: "/Gamma-Fleet/trips-page"
+            nav: "/trips-page"
         },
         {
             title: "Settings",
             icon: setting,
-            nav: "/Gamma-Fleet/settings-page"
+            nav: "/settings-page"
         }
     ]);
 
@@ -111,9 +111,9 @@ const HomePageNav = () => {
     }, [isExpanded]);
 
     const handleLogOut = () => {
-        Cookies.remove('token', { path: '/Gamma-Fleet/' });
         Cookies.remove('token', { path: '/' });
-        navigate("/Gamma-Fleet/signIn-page")
+        Cookies.remove('token', { path: '/' });
+        navigate("/signIn-page")
     };
 
     return (

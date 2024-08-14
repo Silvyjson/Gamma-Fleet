@@ -13,7 +13,7 @@ const HomePageLayout = () => {
         const checkAuth = async () => {
             const token = Cookies.load('token');
             if (!token) {
-                navigate('/Gamma-Fleet/signIn-page');
+                navigate('/signIn-page');
                 return;
             }
 
@@ -22,12 +22,12 @@ const HomePageLayout = () => {
                 const currentTime = Date.now() / 1000; // Current time in seconds
 
                 if (decodedToken.exp < currentTime) {
-                    navigate('/Gamma-Fleet/signIn-page');
+                    navigate('/signIn-page');
                     return;
                 }
             } catch (error) {
                 console.error("Error decoding token:", error);
-                navigate('/Gamma-Fleet/signIn-page');
+                navigate('/signIn-page');
             }
         };
 

@@ -44,6 +44,11 @@
 .navlist :nth-child(2):hover {
   color: $text-color;
   text-decoration: none;
+
+  @include lg {
+    color: $primary-color;
+    text-decoration: underline;
+  }
 }
 
 .navlist li {
