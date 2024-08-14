@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
-import Menubar from "../Other-component/Navigation";
 import logo from '../../assets/GAMMA_LOGO.png'
 import PropTypes from "prop-types";
 
@@ -66,10 +65,11 @@ const NavSection = () => {
         <nav className="header_nav-section">
             <div className="logo-menubar-container">
                 <img src={logo} alt="logo" />
-                <Menubar
-                    onClick={toggleList}
-                    className="headersection-menu-icon"
-                />
+
+                <div className="menu-icon headersection-menu-icon" onClick={toggleList}>
+                    <div></div>
+                    <div></div>
+                </div>
             </div>
 
             <ul className="navElement">

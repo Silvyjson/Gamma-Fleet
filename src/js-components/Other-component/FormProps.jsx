@@ -44,7 +44,7 @@ export const Input = (props) => {
       <div className="password-container">
         {type === "password" && (
           <FontAwesomeIcon
-            icon={isPasswordVisible ? "fa-regular fa-eye" : "fa-solid fa-eye-low-vision"}
+            icon={isPasswordVisible ? "fa-regular fa-eye" : "fa-regular fa-eye-slash"}
             onClick={togglePasswordVisibility}
             className="font-awesome"
           />
